@@ -1,8 +1,10 @@
 # node_express
 ## 使用教學
 - 鍵入 express -e 資料夾名稱
-- 新增一個資料夾，裡面就會有基本的資料，結構如下：
-- folder name
+- 鍵入 cd 資料夾名稱 && npm install
+
+## 新增後的結構
+Folder Name
 ├── app.js
 ├── bin
 │   └── www
@@ -18,4 +20,3 @@
 └── views
     ├── error.ejs
     └── index.ejs
-- 鍵入 cd 資料夾名稱 && npm install
