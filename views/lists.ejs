@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+	<main role="main">
+		<div class="container">
+			<h2><%= list.title %></h2>
+			<p><%= list.content %></p>
+			<button type="button" onclick="history.back()">回上頁</button>
+		</div>
+	</main>
+	<% include footer %>
+</body>
+</html>
