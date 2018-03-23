@@ -4,6 +4,7 @@
 - 鍵入 cd 資料夾名稱 && npm install
 
 ## 新增後的結構
+```
 Folder Name
 ├── app.js
 ├── bin
@@ -20,3 +21,4 @@ Folder Name
 └── views
     ├── error.ejs
     └── index.ejs
+```
