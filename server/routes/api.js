@@ -1,8 +1,11 @@
 // express web framework
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
-var fs = require('fs'); //讀取 api 資料
+const fs = require('fs'); //讀取 api 資料
+
+
+const config = require('../config/config');
 
 router.all('*', function(req, res, next){
   fs.readFile('./posts.json', function(err, data){
@@ -13,18 +16,16 @@ router.all('*', function(req, res, next){
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index.ejs', {title:"Get json data using express web framework"});
+  res.render('index.ejs', {title:`此路徑是: localhost:${config.port}/api`});
 });
 
 //顯示 posts.json 資料
-router.get('/api/posts', function(req, res){
+router.get('/posts', function(req, res){
   res.json(res.locals.lists);
 });
 
 //當 url 是 /post/:id 時, 取得某一筆資料
 router.get('/:id', function(req, res, next){
-  console.log('-------------------')
-  console.log(res.locals)
   //取得 post.json 資料夾
   res.locals.lists.forEach(function(list){
     //從 url 取得 id 參數與 posts.json 裡的 id

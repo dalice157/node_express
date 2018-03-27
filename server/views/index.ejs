@@ -2,16 +2,16 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='../../dist/css/style.css' />
   </head>
   <body>
     <% include header %>
     <main role="main">
       <div class="container">
-        <a class="json-link" href="/post/api/posts"> <b>-></b> 前往 JSON 資料</a>
+        <a class="json-link" href="/api/posts"> <b>-></b> 前往 JSON 資料</a>
         <% lists.forEach(function(list){ %>
           <h2>
-            <a href="/post/<%= list.id %>">
+            <a href="/api/<%= list.id %>">
               <%= list.title %>
             </a>
           </h2>

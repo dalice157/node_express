@@ -1,0 +1,61 @@
+*{
+  padding:0;
+  margin: 0;
+}
+html{
+  height: 100%;
+}
+body{
+  height: 100%;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+a {
+  color: #00B7FF;
+  text-decoration:none;
+}
+a:hover{
+  color: rgb(160, 224, 250)
+}
+h1{
+  padding:50px 50px 10px;
+}
+h2{
+  margin: 15px 0;
+}
+main{
+  height: 96%;
+}
+main .container{
+  padding:0 50px 50px;
+}
+
+main .container p{
+  margin: 10px 0;
+}
+
+button{
+  padding:5px 10px;
+  background-color: aquamarine;
+  border-radius: 5px;
+  border:1px solid rgb(6, 94, 74);
+  color:rgb(6, 94, 74);
+  cursor: pointer;
+}
+button:hover{
+  background-color: aqua
+}
+
+.json-link{
+  font-size: 16px;
+  margin-bottom: 15px;
+  display: block;
+}
+
+footer{
+  background-color: rgb(67, 68, 69);
+  color:#fff;
+  text-align: center;
+}
+footer .container{
+  padding:10px;
+}

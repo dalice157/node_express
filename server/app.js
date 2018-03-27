@@ -1,19 +1,19 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');//中間層記錄日誌
+const express = require('express');
+const path = require('path');
+const favicon = require('serve-favicon');
+const logger = require('morgan');//中間層記錄日誌
 //https://www.cnblogs.com/chyingp/p/node-learning-guide-express-morgan.html
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 //http://www.cnblogs.com/chyingp/p/nodejs-learning-express-body-parser.html
 
-var users = require('./routes/users');
-var apis = require('./routes/apis');
+const users = require('./routes/users');
+const api = require('./routes/api');
 
-var app = express();
+const app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, './views'));
 app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
@@ -22,11 +22,11 @@ app.use(logger('dev'));//將log印在 Terminal 裡
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, './views')));
 
-app.use('/', apis);
+app.use('/', api);
 app.use('/users', users);
-app.use('/post', apis);
+app.use('/api', api);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
