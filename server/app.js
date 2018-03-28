@@ -13,7 +13,7 @@ const api = require('./routes/api');
 
 const app = express();
 
-// require('isomorphic-fetch');
+require('isomorphic-fetch');
 
 // view engine setup
 app.set('views', path.join(__dirname, './views'));
