@@ -2,10 +2,11 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='../../dist/css/style.css' />
+    <link rel='stylesheet' href='../../../dist/css/style.css' />
   </head>
   <body>
     <% include header %>
+    <div id="root"></div>
     <main role="main">
       <div class="container">
         <a class="json-link" href="/api/posts"> <b>-></b> 前往 JSON 資料</a>
@@ -19,5 +20,6 @@
       </div>
     </main>
     <% include footer %>
+    <script type="text/javascript" src="./js/index.bundle.js"></script>
   </body>
 </html>
