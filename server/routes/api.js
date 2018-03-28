@@ -6,14 +6,14 @@ const router = express.Router();
 const env = process.env.NODE_ENV || 'dev';
 const config = require('../config/config')[env];
 //後端 api 串接
-const guestPid = 0;
+const guestPid = 1;
 const JAVA_URL = config.backend.domain;
 
 function status(response) {
 	if (response.ok) {
 		return response.json();
 	} else {
-		return response.json().then(function(err) {			
+		return response.json().then(function(err) {
 			err.status = response.status;
         	throw err;		
 		});
@@ -23,9 +23,7 @@ function status(response) {
 //當 url 是 /user/:pid 時, 取得某一筆資料
 router.get('/user/:pid', (req, res) => {
 	const { pid } = req.params;
-	const who = guestPid;
-
-
+  const who = guestPid;
 	fetch(`${JAVA_URL}/user/${pid}/${who}`, {
 		method: 'GET',
 		headers: {
