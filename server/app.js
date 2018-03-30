@@ -9,10 +9,6 @@ const bodyParser = require('body-parser');
 //http://www.cnblogs.com/chyingp/p/nodejs-learning-express-body-parser.html
 
 const webpack = require('webpack');
-const webpackDevMiddleware = require('webpack-dev-middleware');
-const webpackHotMiddleware = require('webpack-hot-middleware');
-const webpackConfig = require('../webpack/webpack.config.js');
-const compiler = webpack(webpackConfig);
 
 const api = require('./routes/api');
 
@@ -32,13 +28,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../dist')));
 
-webpackConfig.entry.Dev = [
-  'webpack/hot/dev-server', 
-  'webpack-hot-middleware/client?http://localhost:3000'
-];
-webpackConfig.plugins.push(new webpack.HotModuleReplacementPlugin());
-
-app.use(webpackHotMiddleware(compiler));
 
 // Routers
 /* GET home page. */

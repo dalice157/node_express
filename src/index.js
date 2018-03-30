@@ -6,6 +6,6 @@ import './css/style.css';
 
 
 ReactDOM.render(
-  <Root />,
+  <Root></Root>,
   document.getElementById('root')
 );

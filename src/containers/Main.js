@@ -1,39 +1,45 @@
 import React, { Component } from 'react';
-import fetch from 'isomorphic-fetch';
+import PropTypes from 'prop-types';
 
 import List from '../components/List';
 
 class Main extends React.Component {
-	constructor(props) {
-    super(props);
-    this.state = {
-      posts: []
-    };
-	}
-
-	componentDidMount() {
-		fetch('http://localhost:3000/posts.json', {
-    	method: 'GET'
-    })
-    .then((response) => {
-			//ok 代表狀態碼在範圍 200-299
-      if (!response.ok) throw new Error(response.statusText)
-      return response.json()
-    })
-    .then((posts) => this.setState({ posts }))
-    .catch((error) => {
-      //這裡可以顯示一些訊息
-      console.error(error)
-    })
-	}
-	
   render() {
+		const {
+      todos,
+			onComplete,
+      onDel,
+      onEdit
+		} = this.props;
+
+		const todoElements = todos.map((todo) => (
+			<List 
+				key={todo.id}
+				id={todo.id}
+				title={todo.title}
+				completed={todo.completed}
+				onComplete={() => onComplete(todo.id)}
+				onDel={()=> onDel(todo.id)}
+				onEdit={onEdit}
+			/>
+    ));
+		
     return (
       <main className="wrap">
-				<List data={this.state.posts} />
+				<ul>
+					{ todoElements }
+				</ul>
 			</main>
 		);
   }
 }
+
+// Main.propTypes = {
+//   todos: PropTypes.arrayOf(PropTypes.object).isRequired,
+//   onUpdateTodo: PropTypes.func,
+//   onToggleTodo: PropTypes.func,
+//   onDeleteTodo: PropTypes.func
+// };
+
 
 export default Main;

@@ -17,11 +17,19 @@ const webpackConfig = {
   module: { // 設定你的檔案選項
     rules: [
       { 
-				test: /\.(js|jsx)$/, 
-				exclude: /node_modules/,
-        use: [
-          { loader: 'babel-loader' }
-        ]
+				test: /\.js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            "presets": [
+              ["env", {
+                "modules": false
+              }],
+              "react",
+            ]
+          }
+        }
 			},
       {
         test: /\.css$/,
@@ -29,16 +37,11 @@ const webpackConfig = {
           fallback: "style-loader",
           use: "css-loader"
         })
-      },
-      {
-        test : /\.json$/,
-        loader : 'json-loader'
-      }  
+      }
     ]
   },
   plugins: [
     new CleanWebpackPlugin([path.join(__dirname, '../dist')], {
-      "verbose": true,
       "exclude": ['posts.json']//不刪除此檔
     }),
     new HtmlWebpackPlugin({ //生成 html 文件
@@ -50,7 +53,6 @@ const webpackConfig = {
     new webpack.DefinePlugin({
       NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'dev'),
     }),
-    new webpack.HotModuleReplacementPlugin(),
 		new webpack.ProvidePlugin({ 
 			// 利用 webpack.ProvidePlugin 讓 $ 和 jQuery 可以連結到 jquery library
 			$: 'jquery',
