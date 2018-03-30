@@ -22,8 +22,8 @@ class Root extends React.Component {
       const newId = this.state.todos.length + 1;
       const newItems = [
         ...this.state.todos,{
-          id:newId,
-          title:newTitle,
+          id: newId,
+          title: newTitle,
           completed: false
         }
       ];
