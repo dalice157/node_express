@@ -12,7 +12,7 @@ class Header extends React.Component {
     return (
       <header className="wrap">
         <h1>{title}</h1>
-        <span>哈囉，{userName}：你有 {todoCount} 項已完成待辦事項</span>
+        <p>哈囉，{userName}：你有 {todoCount} 項已完成待辦事項</p>
       </header>
     );
   }

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import fetch from 'isomorphic-fetch';
 
 import Header from '../components/Header';
 import InputField from '../components/InputField';
@@ -18,16 +17,18 @@ class Root extends React.Component {
     this.toggleItem = this.toggleItem.bind(this);
   }
 
-	addItem(newLable) {
-    const newId = this.state.todos.length + 1;
-		const newItems = [
-			...this.state.todos,{
-				id:newId,
-				title:newLable,
-				completed: false
-			}
-		];
-		this.setState({ todos: newItems});
+	addItem(newTitle) {
+    if(newTitle !== ''){ //防呆如果有輸入才會進入
+      const newId = this.state.todos.length + 1;
+      const newItems = [
+        ...this.state.todos,{
+          id:newId,
+          title:newTitle,
+          completed: false
+        }
+      ];
+      this.setState({ todos: newItems});
+    }
 	}
 
 	delItem(id) {
@@ -35,14 +36,14 @@ class Root extends React.Component {
 		this.setState({ todos: newItems });
 	}
 
-	modifyItem(id,newLable) {
+	modifyItem(id,newTitle) {
 		const newItems = this.state.todos.map(ele => {
 			if(ele.id !== id)
 				return ele;
 			return {
         id: ele.id,
         completed: ele.completed,
-				title: newLable
+				title: newTitle
 			}
 		});
 		this.setState({ todos: newItems });
