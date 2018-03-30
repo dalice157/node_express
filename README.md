@@ -1,5 +1,3 @@
-# node_express
-## todoList練習及fetch練習
 ```
 .
 ├── README.md
@@ -34,10 +32,8 @@
 │   ├── css
 │   │   └── style.css
 │   └── index.js
-├── webpack
-│   └── webpack.config.js
-├── yarn-error.log
-└── yarn.lock
-
-
+└── webpack
+   └── webpack.config.js
 ```
+todo list及fetch練習
+
