@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
 const morgan = require('morgan');//中間層記錄日誌
+const winston = require('winston');//記錄日誌
 // winston log框架
 //https://www.cnblogs.com/chyingp/p/node-learning-guide-express-morgan.html
 const cookieParser = require('cookie-parser');
@@ -53,5 +54,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+winston.log('info', 'Hello distributed log files!');
 
 module.exports = app;
