@@ -1,0 +1,35 @@
+{
+  "presets": [
+    ["env", {
+      "targets": {
+        "node": "4",
+        "browsers": [
+          ">1%",
+          "last 4 versions",
+          "Firefox ESR",
+          "not ie < 8"
+        ]
+      },
+      "modules": false
+    }],
+    "stage-0",
+    "react"
+  ],
+  "plugins": [
+    "transform-decorators-legacy",
+    ["transform-runtime", {
+      "helpers": false,
+      "polyfill": false,
+      "regenerator": true,
+      "moduleName": "babel-runtime"
+    }]
+  ],
+  "env": {
+    "test": {
+      "presets": ["env", "stage-0", "react"],
+      "plugins": [
+        "transform-decorators-legacy"
+      ]
+    }
+  }
+}

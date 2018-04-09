@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import Header from '../components/Header';
 import InputField from '../components/InputField';
 import Main from './Main';
 import Footer from '../components/Footer';
 
+import * as Actions from '../actions/Items';
+
 class Root extends React.Component {
   constructor(props) {
     super(props);
+    console.log('super:', props)
     this.state = {
       todos: []
     };
@@ -17,7 +21,7 @@ class Root extends React.Component {
     this.toggleItem = this.toggleItem.bind(this);
   }
 
-	addItem(newTitle) {
+	addItem(newTitle) { //加入列表
     if(newTitle !== ''){ //防呆如果有輸入才會進入
       const newId = this.state.todos.length + 1;
       const newItems = [
@@ -31,12 +35,12 @@ class Root extends React.Component {
     }
 	}
 
-	delItem(id) {
+	delItem(id) { //刪除列表
 		const newItems = this.state.todos.filter(ele => ele.id !== id);
 		this.setState({ todos: newItems });
 	}
 
-	modifyItem(id,newTitle) {
+	modifyItem(id,newTitle) { //修改列表
 		const newItems = this.state.todos.map(ele => {
 			if(ele.id !== id)
 				return ele;
@@ -49,7 +53,7 @@ class Root extends React.Component {
 		this.setState({ todos: newItems });
 	}
 
-	toggleItem(id) {
+	toggleItem(id) { //checkbox是否勾選
 		const newItems = this.state.todos.map(ele => {
 			if(ele.id !== id)
 				return ele;
@@ -80,6 +84,8 @@ class Root extends React.Component {
 
   render() {
     const { todos } = this.state;
+    const { loadItems } = this.props;
+    console.log('items', this.props)
     return (
       <div>
         <Header 
@@ -90,7 +96,7 @@ class Root extends React.Component {
         <InputField 
           placeholder="新增待辦清單"
           value=''
-          onSubmit={this.addItem}
+          onSubmit={this.props.addItem}
         />
         <Main 
           todos={todos}
@@ -104,4 +110,17 @@ class Root extends React.Component {
   }
 }
 
-export default Root;
+const mapStateToProps = (state, ownProps) => {
+	return {
+    todos:state.itemReducer.todos
+  };
+}
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+    loadItems:  dispatch(Actions.addTask()),
+    addItem: (newTitle) => dispatch(Actions.addItem(newTitle))
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Root);

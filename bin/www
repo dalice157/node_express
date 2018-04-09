@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-const app = require('../server/app');
+const app = require('../api/app');
 const debug = require('debug')('node-api:server');
 const http = require('http');
 
@@ -12,7 +12,7 @@ const http = require('http');
  * Get port from environment and store in Express.
  */
 const env = process.env.NODE_ENV || 'dev';
-const config = require('../server/config/config')[env];
+const config = require('../api/config/config')[env];
 
 app.set('port', config.app.port);
 

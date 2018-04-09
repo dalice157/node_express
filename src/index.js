@@ -1,11 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Root from './containers/Root';
+import Routes from './router/index';
+import {browserHistory} from 'react-router';
+
+import { Provider } from 'react-redux';
+import { syncHistoryWithStore } from 'react-router-redux'
+
+import configureStore from './store/index'
+
 import './css/style.css';
 
 
+function setup() {
+  const initState = window.__INITIAL_STATE__;
+
+  const store = configureStore(initState);
+  const history = syncHistoryWithStore(browserHistory, store);
+  
+
+  return (
+    <Provider store={store}>
+      <Routes store={store} history={history}></Routes>
+    </Provider>
+  );
+}
+
+
 ReactDOM.render(
-  <Root></Root>,
+  setup(),
   document.getElementById('root')
 );

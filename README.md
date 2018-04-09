@@ -1,4 +1,4 @@
-### todo list及fetch練習
+### Redux的todo list練習
 ```
 .
 ├── README.md
