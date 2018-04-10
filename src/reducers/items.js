@@ -1,21 +1,16 @@
-const initState = {
-	todos:[]
-};
+const initState = 
+	[{
+		id:0,
+		title: '',
+		completed:''
+	}]
+;
 
 export default function Item (state = initState, action){
+	console.log('state', state)
 	switch (action.type){
-		case 'ADD_TASK_SUCCESS':
-			return {
-				...state
-			};
 		case 'ADD_ITEM': 
-			return {
-					...initState,
-					todos:[{
-						title: action.title,
-						completed: false
-					}]
-				};
+			return 	state;
 		default:
 			return state;
 	}

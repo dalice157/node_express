@@ -6,7 +6,7 @@ import List from '../components/List';
 class Main extends React.Component {
   render() {
 		const {
-      todos,
+			todos,
 			onComplete,
       onDel,
       onEdit
@@ -22,7 +22,7 @@ class Main extends React.Component {
 				onDel={()=> onDel(todo.id)}
 				onEdit={onEdit}
 			/>
-    ));
+		));
 		
     return (
       <main className="wrap">

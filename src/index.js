@@ -17,11 +17,9 @@ function setup() {
 
   const store = configureStore(initState);
   const history = syncHistoryWithStore(browserHistory, store);
-  
-
   return (
     <Provider store={store}>
-      <Routes store={store} history={history}></Routes>
+      <Routes history={history}></Routes>
     </Provider>
   );
 }

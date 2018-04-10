@@ -16196,11 +16196,10 @@ function setup() {
 
   var store = Object(__WEBPACK_IMPORTED_MODULE_6__store_index__["a" /* default */])(initState);
   var history = Object(__WEBPACK_IMPORTED_MODULE_5_react_router_redux__["syncHistoryWithStore"])(__WEBPACK_IMPORTED_MODULE_3_react_router__["d" /* browserHistory */], store);
-
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
     __WEBPACK_IMPORTED_MODULE_4_react_redux__["a" /* Provider */],
     { store: store },
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__router_index__["a" /* default */], { store: store, history: history })
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__router_index__["a" /* default */], { history: history })
   );
 }
 
@@ -29605,11 +29604,12 @@ var replaceLocation = exports.replaceLocation = function replaceLocation(locatio
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(145);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Header__ = __webpack_require__(327);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_InputField__ = __webpack_require__(154);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Main__ = __webpack_require__(328);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_Footer__ = __webpack_require__(331);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__actions_Items__ = __webpack_require__(332);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_redux__ = __webpack_require__(87);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Header__ = __webpack_require__(327);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_InputField__ = __webpack_require__(154);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Main__ = __webpack_require__(328);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_Footer__ = __webpack_require__(331);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__actions_Items__ = __webpack_require__(332);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
@@ -29630,6 +29630,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
+
 var Root = function (_React$Component) {
   _inherits(Root, _React$Component);
 
@@ -29638,7 +29639,6 @@ var Root = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (Root.__proto__ || Object.getPrototypeOf(Root)).call(this, props));
 
-    console.log('super:', props);
     _this.state = {
       todos: []
     };
@@ -29723,31 +29723,32 @@ var Root = function (_React$Component) {
     key: 'render',
     value: function render() {
       var todos = this.state.todos;
-      var loadItems = this.props.loadItems;
+      var addItem = this.props.addItem;
 
-      console.log('items', this.props);
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
         null,
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_Header__["a" /* default */], {
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components_Header__["a" /* default */], {
           title: '\u6211\u7684\u5F85\u8FA6\u4E8B\u9805',
           userName: 'Da Chu',
           todoCount: todos.filter(function (todo) {
             return todo.completed;
           }).length
         }),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components_InputField__["a" /* default */], {
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__components_InputField__["a" /* default */], {
           placeholder: '\u65B0\u589E\u5F85\u8FA6\u6E05\u55AE',
           value: '',
-          onSubmit: this.props.addItem
+          onSubmit: function onSubmit(value) {
+            return addItem(value);
+          }
         }),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__Main__["a" /* default */], {
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__Main__["a" /* default */], {
           todos: todos,
           onComplete: this.toggleItem,
           onDel: this.delItem,
           onEdit: this.modifyItem
         }),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__components_Footer__["a" /* default */], null)
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__components_Footer__["a" /* default */], null)
       );
     }
   }]);
@@ -29755,18 +29756,16 @@ var Root = function (_React$Component) {
   return Root;
 }(__WEBPACK_IMPORTED_MODULE_0_react___default.a.Component);
 
-var mapStateToProps = function mapStateToProps(state, ownProps) {
+var mapStateToProps = function mapStateToProps(state) {
   return {
-    todos: state.itemReducer.todos
+    itemReducer: state.itemReducer
   };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    loadItems: dispatch(__WEBPACK_IMPORTED_MODULE_6__actions_Items__["b" /* addTask */]()),
-    addItem: function addItem(newTitle) {
-      return dispatch(__WEBPACK_IMPORTED_MODULE_6__actions_Items__["a" /* addItem */](newTitle));
-    }
+    addItem: Object(__WEBPACK_IMPORTED_MODULE_2_redux__["b" /* bindActionCreators */])(__WEBPACK_IMPORTED_MODULE_7__actions_Items__["a" /* addItem */], dispatch)
+    // addItem: (newTitle) => dispatch(Actions.addItem(newTitle))
   };
 };
 
@@ -31382,34 +31381,14 @@ var Footer = function Footer() {
 /* harmony export (immutable) */ __webpack_exports__["a"] = addItem;
 /* unused harmony export delItem */
 /* unused harmony export modifyItem */
-/* harmony export (immutable) */ __webpack_exports__["b"] = addTask;
+/* unused harmony export addTask */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__constants_actionTypes__ = __webpack_require__(333);
 
-
-// export function addTaskRequest(){
-//   return {
-//     type: 'ADD_TASK_REQUEST'
-//   };
-// }
-
-// export function addTaskSuccess(todos){
-// 	console.log('todis', todos[])
-//   return {
-//     type: 'ADD_TASK_SUCCESS',
-//     ...todos
-//   };
-// }
-
-// export function addTaskFailure(err){
-//   return {
-//     type: 'ADD_TASK_FAILURE',
-//     err
-//   };
-// }
 
 function addItem(newTitle) {
 	return {
 		type: __WEBPACK_IMPORTED_MODULE_0__constants_actionTypes__["a" /* ADD_ITEM */],
+		id: 1,
 		title: newTitle
 	};
 }
@@ -31435,12 +31414,10 @@ function addTask() {
 			method: 'GET'
 		}).then(function (response) {
 			//ok 代表狀態碼在範圍 200-299
-			console.log('json:', response.json());
 			if (!response.ok) throw new Error(response.statusText);
-			return {
-				type: 'ADD_TASK_SUCCESS',
-				todos: response.json()
-			};
+			return response.json();
+		}).then(function (todos) {
+			type: 'ADD_TASK_SUCCESS', todos;
 		}).catch(function (err) {
 			return dispatch(addTaskFailure(err));
 		});
@@ -31724,26 +31701,20 @@ var rootReducer = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["c" /* combineReduc
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = Item;
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var initState = {
-	todos: []
-};
+var initState = [{
+	id: 0,
+	title: '',
+	completed: ''
+}];
 
 function Item() {
 	var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initState;
 	var action = arguments[1];
 
+	console.log('state', state);
 	switch (action.type) {
-		case 'ADD_TASK_SUCCESS':
-			return _extends({}, state);
 		case 'ADD_ITEM':
-			return _extends({}, initState, {
-				todos: [{
-					title: action.title,
-					completed: false
-				}]
-			});
+			return state;
 		default:
 			return state;
 	}

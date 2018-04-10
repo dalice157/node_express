@@ -1,30 +1,10 @@
 import { ADD_ITEM, DEL_ITEM, MODIFY_ITEM } from '../constants/actionTypes';
 
 
-// export function addTaskRequest(){
-//   return {
-//     type: 'ADD_TASK_REQUEST'
-//   };
-// }
-
-// export function addTaskSuccess(todos){
-// 	console.log('todis', todos[])
-//   return {
-//     type: 'ADD_TASK_SUCCESS',
-//     ...todos
-//   };
-// }
-
-// export function addTaskFailure(err){
-//   return {
-//     type: 'ADD_TASK_FAILURE',
-//     err
-//   };
-// }
-
 export function addItem(newTitle) {
 	return {
 		type: ADD_ITEM,
+		id: 1,
 		title: newTitle
 	}
 }
@@ -51,13 +31,15 @@ export function addTask(){
 		})
 		.then((response) => {
 			//ok 代表狀態碼在範圍 200-299
-			console.log('json:', response.json())
 			if (!response.ok) throw new Error(response.statusText)
-			return {
+			return response.json();
+		})
+		.then(
+			(todos) =>  {
 				type: 'ADD_TASK_SUCCESS',
-				todos:response.json()
-			};
-    })
+				todos
+			}
+		)
     .catch(err => dispatch(addTaskFailure(err)));
   };
 }

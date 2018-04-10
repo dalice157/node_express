@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import Header from '../components/Header';
 import InputField from '../components/InputField';
@@ -11,7 +12,6 @@ import * as Actions from '../actions/Items';
 class Root extends React.Component {
   constructor(props) {
     super(props);
-    console.log('super:', props)
     this.state = {
       todos: []
     };
@@ -84,8 +84,7 @@ class Root extends React.Component {
 
   render() {
     const { todos } = this.state;
-    const { loadItems } = this.props;
-    console.log('items', this.props)
+    const { addItem } = this.props;
     return (
       <div>
         <Header 
@@ -96,7 +95,7 @@ class Root extends React.Component {
         <InputField 
           placeholder="新增待辦清單"
           value=''
-          onSubmit={this.props.addItem}
+          onSubmit={(value)=>addItem(value)}
         />
         <Main 
           todos={todos}
@@ -110,16 +109,16 @@ class Root extends React.Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
 	return {
-    todos:state.itemReducer.todos
+    itemReducer: state.itemReducer
   };
 }
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-    loadItems:  dispatch(Actions.addTask()),
-    addItem: (newTitle) => dispatch(Actions.addItem(newTitle))
+    addItem: bindActionCreators(Actions.addItem, dispatch)
+    // addItem: (newTitle) => dispatch(Actions.addItem(newTitle))
   };
 }
 
