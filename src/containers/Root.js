@@ -63,7 +63,7 @@ class Root extends React.Component {
 	}
 
   componentDidMount() {
-		fetch('http://localhost:3000/posts.json', {
+		fetch('http://localhost:3030/posts.json', {
     	method: 'GET'
     })
     .then((response) => {

@@ -41,8 +41,10 @@ const webpackConfig = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin([path.join(__dirname, '../dist')], {
-      "exclude": ['posts.json']//不刪除此檔
+    new CleanWebpackPlugin(['dist'], {
+      "exclude": ['posts.json'],//不刪除此檔
+      root: path.join(__dirname, '../'), //設定root的路徑
+      verbose: true
     }),
     new HtmlWebpackPlugin({ //生成 html 文件
 			title: 'Webpack Test',
