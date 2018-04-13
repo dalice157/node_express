@@ -1,16 +1,16 @@
-const initState = 
-	[{
-		id:0,
-		title: '',
-		completed:''
-	}]
-;
 
-export default function Item (state = initState, action){
-	console.log('state', state)
+export default function Item (state = [], action){
+
 	switch (action.type){
 		case 'ADD_ITEM': 
-			return 	state;
+			return [
+        ...state,
+        {
+          id: action.id + 1,
+          title: action.title,
+          completed: false
+        }
+      ];
 		default:
 			return state;
 	}
