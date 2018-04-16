@@ -7,7 +7,7 @@ class Item extends React.Component {
 	constructor(props, context) {
     super(props, context);
     this.state = { 
-      editable: false 
+      editable: false
     };
     this.toggleEditMode = this.toggleEditMode.bind(this);
   }
@@ -50,8 +50,8 @@ class Item extends React.Component {
         autoFocus
         placeholder="編輯待辦事項"
         value={title}
-        onSubmit={(newValue) => {
-				onEdit(id,newValue)
+        onSubmit={(id, newValue) => {
+				onEdit(id, newValue)
 				this.toggleEditMode()
 			  }}
       />

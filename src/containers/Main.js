@@ -11,7 +11,7 @@ class Main extends React.Component {
       onDel,
       onEdit
 		} = this.props;
-
+		console.log("todos:", todos)
 		const todoElements = todos.map((todo,index) => (
 			<List 
 				key={index}
@@ -19,7 +19,7 @@ class Main extends React.Component {
 				completed={todo.completed}
 				onComplete={() => onComplete(todo.id)}
 				onDel={()=> onDel(todo.id)}
-				onEdit={onEdit}
+				onEdit={()=> onEdit(todo.id, todo.title)}
 			/>
 		));
 		

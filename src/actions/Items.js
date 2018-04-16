@@ -6,7 +6,8 @@ export function addItem(newTitle) {
 	return {
 		type: ADD_ITEM,
 		id: nextTodoId++,
-		title: newTitle
+		title: newTitle,
+		completed: false
 	}
 }
 
@@ -17,9 +18,10 @@ export function delItem(delId) {
 	}
 }
 
-export function modifyItem(modifyTitle) {
+export function modifyItem(modifyId, modifyTitle) {
 	return {
 		type: MODIFY_ITEM,
+		id: modifyId,
 		title: modifyTitle
 	}
 }

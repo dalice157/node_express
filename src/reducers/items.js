@@ -6,9 +6,7 @@ export default function Item (state = [], action){
 			return [
         ...state,
         {
-          id: action.id,
-          title: action.title,
-          completed: false
+          ...action
         }
 			];
 		case 'TOGGLE_ITEM': 
@@ -20,7 +18,17 @@ export default function Item (state = [], action){
 		case 'DEL_ITEM': 
 			return state.filter(todo =>
         todo.id !== action.id
-      );
+			);
+		case 'MODIFY_ITEM': 
+			return state.map(todo =>
+        (todo.id !== action.id)
+          ? todo
+					: {
+						...todo, 
+						id: action.id,
+          	title: action.title
+					}
+			);
 		default:
 			return state;
 	}

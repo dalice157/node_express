@@ -15185,10 +15185,16 @@ var InputField = function (_React$Component) {
     _this.state = {
       title: props.value
     };
+    _this.handleChange = _this.handleChange.bind(_this);
     return _this;
   }
 
   _createClass(InputField, [{
+    key: 'handleChange',
+    value: function handleChange(e) {
+      this.setState({ title: e.target.value });
+    }
+  }, {
     key: 'render',
     value: function render() {
       var _this2 = this;
@@ -15201,9 +15207,7 @@ var InputField = function (_React$Component) {
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', _extends({}, this.props, {
           type: 'text',
           value: this.state.title,
-          onChange: function onChange(e) {
-            return _this2.setState({ title: e.target.value });
-          }
+          onChange: this.handleChange
         })),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'button',
@@ -29635,89 +29639,19 @@ var Root = function (_React$Component) {
   function Root(props) {
     _classCallCheck(this, Root);
 
-    var _this = _possibleConstructorReturn(this, (Root.__proto__ || Object.getPrototypeOf(Root)).call(this, props));
-
-    _this.state = {
-      todos: []
-    };
-    // this.addItem = this.addItem.bind(this);
-    // this.delItem = this.delItem.bind(this);
-    // this.modifyItem = this.modifyItem.bind(this);
-    // this.toggleItem = this.toggleItem.bind(this);
-    return _this;
+    return _possibleConstructorReturn(this, (Root.__proto__ || Object.getPrototypeOf(Root)).call(this, props));
   }
 
-  // addItem(newTitle) { //加入列表
-  //   if(newTitle !== ''){ //防呆如果有輸入才會進入
-  //     const newId = this.state.todos.length + 1;
-  //     const newItems = [
-  //       ...this.state.todos,{
-  //         id: newId,
-  //         title: newTitle,
-  //         completed: false
-  //       }
-  //     ];
-  //     this.setState({ todos: newItems});
-  //   }
-  // }
-
-  // delItem(id) { //刪除列表
-  // 	const newItems = this.state.todos.filter(ele => ele.id !== id);
-  // 	this.setState({ todos: newItems });
-  // }
-
-  // modifyItem(id,newTitle) { //修改列表
-  // 	const newItems = this.state.todos.map(ele => {
-  // 		if(ele.id !== id)
-  // 			return ele;
-  // 		return {
-  //       id: ele.id,
-  //       completed: ele.completed,
-  // 			title: newTitle
-  // 		}
-  // 	});
-  // 	this.setState({ todos: newItems });
-  // }
-
-  // toggleItem(id) { //checkbox是否勾選
-  // 	const newItems = this.state.todos.map(ele => {
-  // 		if(ele.id !== id)
-  // 			return ele;
-  // 		return {
-  //       id: ele.id,
-  // 			title: ele.title,
-  // 			completed: !ele.completed
-  // 		}
-  // 	});
-  // 	this.setState({ todos: newItems });
-  // }
-
   _createClass(Root, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      // fetch('http://localhost:3030/posts.json', {
-      // 	method: 'GET'
-      // })
-      // .then((response) => {
-      // 	//ok 代表狀態碼在範圍 200-299
-      //   if (!response.ok) throw new Error(response.statusText)
-      //   return response.json()
-      // })
-      // .then((todos) => this.setState({ todos }))
-      // .catch((error) => {
-      //   //這裡可以顯示一些訊息
-      //   console.error(error)
-      // })
-    }
-  }, {
     key: 'render',
     value: function render() {
-      var todos = this.state.todos;
       var _props = this.props,
           addItem = _props.addItem,
           toggleItem = _props.toggleItem,
           delItem = _props.delItem,
+          modifyItem = _props.modifyItem,
           itemReducer = _props.itemReducer;
+
 
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
@@ -29732,8 +29666,8 @@ var Root = function (_React$Component) {
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__components_InputField__["a" /* default */], {
           placeholder: '\u65B0\u589E\u5F85\u8FA6\u6E05\u55AE',
           value: '',
-          onSubmit: function onSubmit(value) {
-            return addItem(value);
+          onSubmit: function onSubmit(newTitle) {
+            return addItem(newTitle);
           }
         }),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__Main__["a" /* default */], {
@@ -29744,7 +29678,9 @@ var Root = function (_React$Component) {
           onDel: function onDel(delId) {
             return delItem(delId);
           },
-          onEdit: this.modifyItem
+          onEdit: function onEdit(modifyId, modifyTitle) {
+            return modifyItem(modifyId, modifyTitle);
+          }
         }),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__components_Footer__["a" /* default */], null)
       );
@@ -29766,10 +29702,13 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
       return dispatch(__WEBPACK_IMPORTED_MODULE_7__actions_Items__["a" /* addItem */](newTitle));
     },
     toggleItem: function toggleItem(toggleId) {
-      return dispatch(__WEBPACK_IMPORTED_MODULE_7__actions_Items__["c" /* toggleItem */](toggleId));
+      return dispatch(__WEBPACK_IMPORTED_MODULE_7__actions_Items__["d" /* toggleItem */](toggleId));
     },
     delItem: function delItem(delId) {
       return dispatch(__WEBPACK_IMPORTED_MODULE_7__actions_Items__["b" /* delItem */](delId));
+    },
+    modifyItem: function modifyItem(modifyId, modifyTitle) {
+      return dispatch(__WEBPACK_IMPORTED_MODULE_7__actions_Items__["c" /* modifyItem */](modifyId, modifyTitle));
     }
   };
 };
@@ -31113,9 +31052,9 @@ var Main = function (_React$Component) {
 			    todos = _props.todos,
 			    _onComplete = _props.onComplete,
 			    _onDel = _props.onDel,
-			    onEdit = _props.onEdit;
+			    _onEdit = _props.onEdit;
 
-
+			console.log("todos:", todos);
 			var todoElements = todos.map(function (todo, index) {
 				return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_List__["a" /* default */], {
 					key: index,
@@ -31127,7 +31066,9 @@ var Main = function (_React$Component) {
 					onDel: function onDel() {
 						return _onDel(todo.id);
 					},
-					onEdit: onEdit
+					onEdit: function onEdit() {
+						return _onEdit(todo.id, todo.title);
+					}
 				});
 			});
 
@@ -31321,7 +31262,7 @@ var Item = function (_React$Component) {
         autoFocus: true,
         placeholder: '\u7DE8\u8F2F\u5F85\u8FA6\u4E8B\u9805',
         value: title,
-        onSubmit: function onSubmit(newValue) {
+        onSubmit: function onSubmit(id, newValue) {
           onEdit(id, newValue);
           _this2.toggleEditMode();
         }
@@ -31381,8 +31322,8 @@ var Footer = function Footer() {
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = addItem;
 /* harmony export (immutable) */ __webpack_exports__["b"] = delItem;
-/* unused harmony export modifyItem */
-/* harmony export (immutable) */ __webpack_exports__["c"] = toggleItem;
+/* harmony export (immutable) */ __webpack_exports__["c"] = modifyItem;
+/* harmony export (immutable) */ __webpack_exports__["d"] = toggleItem;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__constants_actionTypes__ = __webpack_require__(333);
 
 
@@ -31392,7 +31333,8 @@ function addItem(newTitle) {
 	return {
 		type: __WEBPACK_IMPORTED_MODULE_0__constants_actionTypes__["a" /* ADD_ITEM */],
 		id: nextTodoId++,
-		title: newTitle
+		title: newTitle,
+		completed: false
 	};
 }
 
@@ -31403,9 +31345,10 @@ function delItem(delId) {
 	};
 }
 
-function modifyItem(modifyTitle) {
+function modifyItem(modifyId, modifyTitle) {
 	return {
 		type: __WEBPACK_IMPORTED_MODULE_0__constants_actionTypes__["c" /* MODIFY_ITEM */],
+		id: modifyId,
 		title: modifyTitle
 	};
 }
@@ -31705,11 +31648,7 @@ function Item() {
 
 	switch (action.type) {
 		case 'ADD_ITEM':
-			return [].concat(_toConsumableArray(state), [{
-				id: action.id,
-				title: action.title,
-				completed: false
-			}]);
+			return [].concat(_toConsumableArray(state), [_extends({}, action)]);
 		case 'TOGGLE_ITEM':
 			return state.map(function (todo) {
 				return todo.id === action.id ? _extends({}, todo, { completed: !todo.completed }) : todo;
@@ -31717,6 +31656,13 @@ function Item() {
 		case 'DEL_ITEM':
 			return state.filter(function (todo) {
 				return todo.id !== action.id;
+			});
+		case 'MODIFY_ITEM':
+			return state.map(function (todo) {
+				return todo.id !== action.id ? todo : _extends({}, todo, {
+					id: action.id,
+					title: action.title
+				});
 			});
 		default:
 			return state;
