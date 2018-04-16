@@ -29641,7 +29641,7 @@ var Root = function (_React$Component) {
       todos: []
     };
     // this.addItem = this.addItem.bind(this);
-    _this.delItem = _this.delItem.bind(_this);
+    // this.delItem = this.delItem.bind(this);
     // this.modifyItem = this.modifyItem.bind(this);
     // this.toggleItem = this.toggleItem.bind(this);
     return _this;
@@ -29661,43 +29661,38 @@ var Root = function (_React$Component) {
   //   }
   // }
 
+  // delItem(id) { //刪除列表
+  // 	const newItems = this.state.todos.filter(ele => ele.id !== id);
+  // 	this.setState({ todos: newItems });
+  // }
+
+  // modifyItem(id,newTitle) { //修改列表
+  // 	const newItems = this.state.todos.map(ele => {
+  // 		if(ele.id !== id)
+  // 			return ele;
+  // 		return {
+  //       id: ele.id,
+  //       completed: ele.completed,
+  // 			title: newTitle
+  // 		}
+  // 	});
+  // 	this.setState({ todos: newItems });
+  // }
+
+  // toggleItem(id) { //checkbox是否勾選
+  // 	const newItems = this.state.todos.map(ele => {
+  // 		if(ele.id !== id)
+  // 			return ele;
+  // 		return {
+  //       id: ele.id,
+  // 			title: ele.title,
+  // 			completed: !ele.completed
+  // 		}
+  // 	});
+  // 	this.setState({ todos: newItems });
+  // }
+
   _createClass(Root, [{
-    key: 'delItem',
-    value: function delItem(id) {
-      //刪除列表
-      var newItems = this.state.todos.filter(function (ele) {
-        return ele.id !== id;
-      });
-      this.setState({ todos: newItems });
-    }
-
-    // modifyItem(id,newTitle) { //修改列表
-    // 	const newItems = this.state.todos.map(ele => {
-    // 		if(ele.id !== id)
-    // 			return ele;
-    // 		return {
-    //       id: ele.id,
-    //       completed: ele.completed,
-    // 			title: newTitle
-    // 		}
-    // 	});
-    // 	this.setState({ todos: newItems });
-    // }
-
-    // toggleItem(id) { //checkbox是否勾選
-    // 	const newItems = this.state.todos.map(ele => {
-    // 		if(ele.id !== id)
-    // 			return ele;
-    // 		return {
-    //       id: ele.id,
-    // 			title: ele.title,
-    // 			completed: !ele.completed
-    // 		}
-    // 	});
-    // 	this.setState({ todos: newItems });
-    // }
-
-  }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
       // fetch('http://localhost:3030/posts.json', {
@@ -29721,6 +29716,7 @@ var Root = function (_React$Component) {
       var _props = this.props,
           addItem = _props.addItem,
           toggleItem = _props.toggleItem,
+          delItem = _props.delItem,
           itemReducer = _props.itemReducer;
 
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -29742,10 +29738,12 @@ var Root = function (_React$Component) {
         }),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__Main__["a" /* default */], {
           todos: itemReducer,
-          onComplete: function onComplete(id) {
-            return toggleItem(id);
+          onComplete: function onComplete(toggleId) {
+            return toggleItem(toggleId);
           },
-          onDel: this.delItem,
+          onDel: function onDel(delId) {
+            return delItem(delId);
+          },
           onEdit: this.modifyItem
         }),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__components_Footer__["a" /* default */], null)
@@ -29768,7 +29766,10 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
       return dispatch(__WEBPACK_IMPORTED_MODULE_7__actions_Items__["a" /* addItem */](newTitle));
     },
     toggleItem: function toggleItem(toggleId) {
-      return dispatch(__WEBPACK_IMPORTED_MODULE_7__actions_Items__["b" /* toggleItem */](toggleId));
+      return dispatch(__WEBPACK_IMPORTED_MODULE_7__actions_Items__["c" /* toggleItem */](toggleId));
+    },
+    delItem: function delItem(delId) {
+      return dispatch(__WEBPACK_IMPORTED_MODULE_7__actions_Items__["b" /* delItem */](delId));
     }
   };
 };
@@ -31384,9 +31385,9 @@ var Footer = function Footer() {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = addItem;
-/* unused harmony export delItem */
+/* harmony export (immutable) */ __webpack_exports__["b"] = delItem;
 /* unused harmony export modifyItem */
-/* harmony export (immutable) */ __webpack_exports__["b"] = toggleItem;
+/* harmony export (immutable) */ __webpack_exports__["c"] = toggleItem;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__constants_actionTypes__ = __webpack_require__(333);
 
 
@@ -31703,24 +31704,28 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 function Item() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-  var action = arguments[1];
+	var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+	var action = arguments[1];
 
 
-  switch (action.type) {
-    case 'ADD_ITEM':
-      return [].concat(_toConsumableArray(state), [{
-        id: action.id,
-        title: action.title,
-        completed: false
-      }]);
-    case 'TOGGLE_ITEM':
-      return state.map(function (todo) {
-        return todo.id === action.id ? _extends({}, todo, { completed: !todo.completed }) : todo;
-      });
-    default:
-      return state;
-  }
+	switch (action.type) {
+		case 'ADD_ITEM':
+			return [].concat(_toConsumableArray(state), [{
+				id: action.id,
+				title: action.title,
+				completed: false
+			}]);
+		case 'TOGGLE_ITEM':
+			return state.map(function (todo) {
+				return todo.id === action.id ? _extends({}, todo, { completed: !todo.completed }) : todo;
+			});
+		case 'DEL_ITEM':
+			return state.filter(function (todo) {
+				return todo.id !== action.id;
+			});
+		default:
+			return state;
+	}
 }
 
 /***/ }),

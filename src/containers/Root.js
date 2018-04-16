@@ -16,7 +16,7 @@ class Root extends React.Component {
       todos: []
     };
     // this.addItem = this.addItem.bind(this);
-    this.delItem = this.delItem.bind(this);
+    // this.delItem = this.delItem.bind(this);
     // this.modifyItem = this.modifyItem.bind(this);
     // this.toggleItem = this.toggleItem.bind(this);
   }
@@ -35,10 +35,10 @@ class Root extends React.Component {
   //   }
 	// }
 
-	delItem(id) { //刪除列表
-		const newItems = this.state.todos.filter(ele => ele.id !== id);
-		this.setState({ todos: newItems });
-	}
+	// delItem(id) { //刪除列表
+	// 	const newItems = this.state.todos.filter(ele => ele.id !== id);
+	// 	this.setState({ todos: newItems });
+	// }
 
 	// modifyItem(id,newTitle) { //修改列表
 	// 	const newItems = this.state.todos.map(ele => {
@@ -84,7 +84,7 @@ class Root extends React.Component {
 
   render() {
     const { todos } = this.state;
-    const { addItem, toggleItem, itemReducer } = this.props;
+    const { addItem, toggleItem, delItem, itemReducer } = this.props;
     return (
       <div>
         <Header 
@@ -99,8 +99,8 @@ class Root extends React.Component {
         />
         <Main 
           todos={itemReducer}
-					onComplete={(id)=>toggleItem(id)}
-					onDel={this.delItem}
+					onComplete={(toggleId)=>toggleItem(toggleId)}
+					onDel={(delId)=>delItem(delId)}
 					onEdit={this.modifyItem}
         />
 				<Footer />
@@ -118,7 +118,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
     addItem: (newTitle) => dispatch(Actions.addItem(newTitle)),
-    toggleItem: (toggleId) => dispatch(Actions.toggleItem(toggleId))
+    toggleItem: (toggleId) => dispatch(Actions.toggleItem(toggleId)),
+    delItem: (delId) => dispatch(Actions.delItem(delId))
   };
 }
 
