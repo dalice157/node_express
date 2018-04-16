@@ -31119,7 +31119,6 @@ var Main = function (_React$Component) {
 			var todoElements = todos.map(function (todo, index) {
 				return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_List__["a" /* default */], {
 					key: index,
-					id: index,
 					title: todo.title,
 					completed: todo.completed,
 					onComplete: function onComplete() {
@@ -31193,7 +31192,6 @@ var List = function (_React$Component) {
     key: 'render',
     value: function render() {
       var _props = this.props,
-          id = _props.id,
           title = _props.title,
           completed = _props.completed,
           onComplete = _props.onComplete,
@@ -31205,7 +31203,6 @@ var List = function (_React$Component) {
         'li',
         null,
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__Item__["a" /* default */], {
-          id: id,
           title: title,
           completed: completed,
           onComplete: onComplete,
@@ -31316,13 +31313,11 @@ var Item = function (_React$Component) {
       var _this2 = this;
 
       var _props2 = this.props,
-          id = _props2.id,
           title = _props2.title,
           onEdit = _props2.onEdit;
 
 
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__InputField__["a" /* default */], {
-        id: id,
         autoFocus: true,
         placeholder: '\u7DE8\u8F2F\u5F85\u8FA6\u4E8B\u9805',
         value: title,

@@ -6,7 +6,6 @@ import Item from './Item';
 class List extends React.Component {
   render() {
     const { 
-      id,
       title,
       completed,
       onComplete,
@@ -17,7 +16,6 @@ class List extends React.Component {
     return (
       <li>
         <Item 
-          id={id}
           title={title} 
           completed={completed} 
           onComplete={onComplete}

@@ -41,14 +41,12 @@ class Item extends React.Component {
 
   renderEditMode() {
     const {
-      id,
       title,
       onEdit
     } = this.props;
 
     return (
       <InputField
-        id={id}
         autoFocus
         placeholder="編輯待辦事項"
         value={title}

@@ -15,7 +15,6 @@ class Main extends React.Component {
 		const todoElements = todos.map((todo,index) => (
 			<List 
 				key={index}
-				id={index}
 				title={todo.title}
 				completed={todo.completed}
 				onComplete={() => onComplete(todo.id)}
