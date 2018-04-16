@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 
 import InputField from './InputField';
 
@@ -32,7 +31,12 @@ class Item extends React.Component {
           checked={completed}
           onChange={onComplete}
         />
-        <span>{title} </span>
+        <span style={{
+          textDecoration: completed ? 'line-through' : 'none',
+          color:  completed ? '#ccc' : '#000'
+        }}>
+        {title} 
+        </span>
         <button type='button' className="btn" onClick={onDel} >刪除</button>
         <button type='button' className="btn" onClick={this.toggleEditMode} >修改</button>
       </label>
@@ -51,8 +55,8 @@ class Item extends React.Component {
         placeholder="編輯待辦事項"
         value={title}
         onSubmit={(id, newValue) => {
-				onEdit(id, newValue)
-				this.toggleEditMode()
+          onEdit(id, newValue)
+          this.toggleEditMode()
 			  }}
       />
     );
@@ -64,13 +68,5 @@ class Item extends React.Component {
       this.renderViewMode();
   }
 }
-
-// Item.propTypes = {
-//   title: PropTypes.string.isRequired,
-//   completed: PropTypes.bool.isRequired,
-//   onUpdate: PropTypes.func,
-//   onToggle: PropTypes.func,
-//   onDel: PropTypes.func
-// };
 
 export default Item;

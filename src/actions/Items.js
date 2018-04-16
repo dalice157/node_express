@@ -1,6 +1,6 @@
 import { ADD_ITEM, DEL_ITEM, MODIFY_ITEM, TOGGLE_ITEM } from '../constants/actionTypes';
 
-let nextTodoId = 0
+let nextTodoId = 0;
 
 export function addItem(newTitle) {
 	return {

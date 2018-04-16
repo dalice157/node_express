@@ -24,8 +24,7 @@ export default function Item (state = [], action){
         (todo.id !== action.id)
           ? todo
 					: {
-						...todo, 
-						id: action.id,
+						...todo,
           	title: action.title
 					}
 			);

@@ -12,6 +12,16 @@ import * as Actions from '../actions/Items';
 class Root extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      title: ''
+    };
+    this.handleAddSave = this.handleAddSave.bind(this);
+  }
+
+  handleAddSave(title){ //防呆：當title為0時就不送出
+    if (title.length !== 0) {
+      this.props.addItem(title);
+    }
   }
 
   render() {
@@ -27,7 +37,7 @@ class Root extends React.Component {
         <InputField 
           placeholder="新增待辦清單"
           value=''
-          onSubmit={(newTitle)=>addItem(newTitle)}
+          onSubmit={this.handleAddSave}
         />
         <Main 
           todos={itemReducer}

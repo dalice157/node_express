@@ -16,6 +16,8 @@ class InputField extends React.Component {
 
   render() {
     const { onSubmit } = this.props;
+    const { title } = this.state;
+
     return (
       <div className="wrap">
         <input

@@ -15200,6 +15200,8 @@ var InputField = function (_React$Component) {
       var _this2 = this;
 
       var onSubmit = this.props.onSubmit;
+      var title = this.state.title;
+
 
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
@@ -29639,10 +29641,24 @@ var Root = function (_React$Component) {
   function Root(props) {
     _classCallCheck(this, Root);
 
-    return _possibleConstructorReturn(this, (Root.__proto__ || Object.getPrototypeOf(Root)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (Root.__proto__ || Object.getPrototypeOf(Root)).call(this, props));
+
+    _this.state = {
+      title: ''
+    };
+    _this.handleAddSave = _this.handleAddSave.bind(_this);
+    return _this;
   }
 
   _createClass(Root, [{
+    key: 'handleAddSave',
+    value: function handleAddSave(title) {
+      //防呆：當title為0時就不送出
+      if (title.length !== 0) {
+        this.props.addItem(title);
+      }
+    }
+  }, {
     key: 'render',
     value: function render() {
       var _props = this.props,
@@ -29666,9 +29682,7 @@ var Root = function (_React$Component) {
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__components_InputField__["a" /* default */], {
           placeholder: '\u65B0\u589E\u5F85\u8FA6\u6E05\u55AE',
           value: '',
-          onSubmit: function onSubmit(newTitle) {
-            return addItem(newTitle);
-          }
+          onSubmit: this.handleAddSave
         }),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__Main__["a" /* default */], {
           todos: itemReducer,
@@ -31020,9 +31034,7 @@ Header.defaultProps = {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_List__ = __webpack_require__(329);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_List__ = __webpack_require__(329);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -31030,7 +31042,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
 
 
 
@@ -31054,9 +31065,8 @@ var Main = function (_React$Component) {
 			    _onDel = _props.onDel,
 			    _onEdit = _props.onEdit;
 
-			console.log("todos:", todos);
 			var todoElements = todos.map(function (todo, index) {
-				return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_List__["a" /* default */], {
+				return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__components_List__["a" /* default */], {
 					key: index,
 					title: todo.title,
 					completed: todo.completed,
@@ -31067,7 +31077,7 @@ var Main = function (_React$Component) {
 						return _onDel(todo.id);
 					},
 					onEdit: function onEdit() {
-						return _onEdit(todo.id, todo.title);
+						return _onEdit(todo.id, 'onChange');
 					}
 				});
 			});
@@ -31087,14 +31097,6 @@ var Main = function (_React$Component) {
 	return Main;
 }(__WEBPACK_IMPORTED_MODULE_0_react___default.a.Component);
 
-// Main.propTypes = {
-//   todos: PropTypes.arrayOf(PropTypes.object).isRequired,
-//   onUpdateTodo: PropTypes.func,
-//   onToggleTodo: PropTypes.func,
-//   onDeleteTodo: PropTypes.func
-// };
-
-
 /* harmony default export */ __webpack_exports__["a"] = (Main);
 
 /***/ }),
@@ -31104,9 +31106,7 @@ var Main = function (_React$Component) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Item__ = __webpack_require__(330);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Item__ = __webpack_require__(330);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -31114,7 +31114,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
 
 
 
@@ -31143,7 +31142,7 @@ var List = function (_React$Component) {
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'li',
         null,
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__Item__["a" /* default */], {
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__Item__["a" /* default */], {
           title: title,
           completed: completed,
           onComplete: onComplete,
@@ -31157,15 +31156,6 @@ var List = function (_React$Component) {
   return List;
 }(__WEBPACK_IMPORTED_MODULE_0_react___default.a.Component);
 
-// List.propTypes = {
-//   title: PropTypes.string.isRequired,
-//   completed: PropTypes.bool.isRequired,
-//   onUpdate: PropTypes.func,
-//   onToggle: PropTypes.func,
-//   onDelete: PropTypes.func
-// };
-
-
 /* harmony default export */ __webpack_exports__["a"] = (List);
 
 /***/ }),
@@ -31175,9 +31165,7 @@ var List = function (_React$Component) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__InputField__ = __webpack_require__(154);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__InputField__ = __webpack_require__(154);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -31185,7 +31173,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
 
 
 
@@ -31232,9 +31219,11 @@ var Item = function (_React$Component) {
         }),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'span',
-          null,
-          title,
-          ' '
+          { style: {
+              textDecoration: completed ? 'line-through' : 'none',
+              color: completed ? '#ccc' : '#000'
+            } },
+          title
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'button',
@@ -31258,7 +31247,7 @@ var Item = function (_React$Component) {
           onEdit = _props2.onEdit;
 
 
-      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__InputField__["a" /* default */], {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__InputField__["a" /* default */], {
         autoFocus: true,
         placeholder: '\u7DE8\u8F2F\u5F85\u8FA6\u4E8B\u9805',
         value: title,
@@ -31277,14 +31266,6 @@ var Item = function (_React$Component) {
 
   return Item;
 }(__WEBPACK_IMPORTED_MODULE_0_react___default.a.Component);
-
-// Item.propTypes = {
-//   title: PropTypes.string.isRequired,
-//   completed: PropTypes.bool.isRequired,
-//   onUpdate: PropTypes.func,
-//   onToggle: PropTypes.func,
-//   onDel: PropTypes.func
-// };
 
 /* harmony default export */ __webpack_exports__["a"] = (Item);
 
@@ -31660,7 +31641,6 @@ function Item() {
 		case 'MODIFY_ITEM':
 			return state.map(function (todo) {
 				return todo.id !== action.id ? todo : _extends({}, todo, {
-					id: action.id,
 					title: action.title
 				});
 			});

@@ -1,17 +1,10 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 
 import List from '../components/List';
 
 class Main extends React.Component {
   render() {
-		const {
-			todos,
-			onComplete,
-      onDel,
-      onEdit
-		} = this.props;
-		console.log("todos:", todos)
+		const { todos, onComplete, onDel, onEdit } = this.props;
 		const todoElements = todos.map((todo,index) => (
 			<List 
 				key={index}
@@ -19,7 +12,7 @@ class Main extends React.Component {
 				completed={todo.completed}
 				onComplete={() => onComplete(todo.id)}
 				onDel={()=> onDel(todo.id)}
-				onEdit={()=> onEdit(todo.id, todo.title)}
+				onEdit={()=> onEdit(todo.id, 'onChange')}
 			/>
 		));
 		
@@ -32,13 +25,6 @@ class Main extends React.Component {
 		);
   }
 }
-
-// Main.propTypes = {
-//   todos: PropTypes.arrayOf(PropTypes.object).isRequired,
-//   onUpdateTodo: PropTypes.func,
-//   onToggleTodo: PropTypes.func,
-//   onDeleteTodo: PropTypes.func
-// };
 
 
 export default Main;
