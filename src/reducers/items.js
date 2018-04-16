@@ -6,11 +6,17 @@ export default function Item (state = [], action){
 			return [
         ...state,
         {
-          id: action.id + 1,
+          id: action.id,
           title: action.title,
           completed: false
         }
-      ];
+			];
+		case 'TOGGLE_ITEM': 
+			return state.map(todo =>
+        (todo.id === action.id)
+          ? {...todo, completed: !todo.completed}
+          : todo
+      );
 		default:
 			return state;
 	}

@@ -12,10 +12,10 @@ class Main extends React.Component {
       onEdit
 		} = this.props;
 
-		const todoElements = todos.map((todo) => (
+		const todoElements = todos.map((todo,index) => (
 			<List 
-				key={todo.id}
-				id={todo.id}
+				key={index}
+				id={index}
 				title={todo.title}
 				completed={todo.completed}
 				onComplete={() => onComplete(todo.id)}

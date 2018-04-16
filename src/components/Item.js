@@ -48,6 +48,7 @@ class Item extends React.Component {
 
     return (
       <InputField
+        id={id}
         autoFocus
         placeholder="編輯待辦事項"
         value={title}
