@@ -29640,10 +29640,10 @@ var Root = function (_React$Component) {
     _this.state = {
       todos: []
     };
-    _this.addItem = _this.addItem.bind(_this);
+    // this.addItem = this.addItem.bind(this);
     _this.delItem = _this.delItem.bind(_this);
-    _this.modifyItem = _this.modifyItem.bind(_this);
-    _this.toggleItem = _this.toggleItem.bind(_this);
+    // this.modifyItem = this.modifyItem.bind(this);
+    // this.toggleItem = this.toggleItem.bind(this);
     return _this;
   }
 
@@ -29661,25 +29661,28 @@ var Root = function (_React$Component) {
   //   }
   // }
 
-  // delItem(id) { //刪除列表
-  // 	const newItems = this.state.todos.filter(ele => ele.id !== id);
-  // 	this.setState({ todos: newItems });
-  // }
-
   _createClass(Root, [{
-    key: 'modifyItem',
-    value: function modifyItem(id, newTitle) {
-      //修改列表
-      var newItems = this.state.todos.map(function (ele) {
-        if (ele.id !== id) return ele;
-        return {
-          id: ele.id,
-          completed: ele.completed,
-          title: newTitle
-        };
+    key: 'delItem',
+    value: function delItem(id) {
+      //刪除列表
+      var newItems = this.state.todos.filter(function (ele) {
+        return ele.id !== id;
       });
       this.setState({ todos: newItems });
     }
+
+    // modifyItem(id,newTitle) { //修改列表
+    // 	const newItems = this.state.todos.map(ele => {
+    // 		if(ele.id !== id)
+    // 			return ele;
+    // 		return {
+    //       id: ele.id,
+    //       completed: ele.completed,
+    // 			title: newTitle
+    // 		}
+    // 	});
+    // 	this.setState({ todos: newItems });
+    // }
 
     // toggleItem(id) { //checkbox是否勾選
     // 	const newItems = this.state.todos.map(ele => {

@@ -15,10 +15,10 @@ class Root extends React.Component {
     this.state = {
       todos: []
     };
-    this.addItem = this.addItem.bind(this);
+    // this.addItem = this.addItem.bind(this);
     this.delItem = this.delItem.bind(this);
-    this.modifyItem = this.modifyItem.bind(this);
-    this.toggleItem = this.toggleItem.bind(this);
+    // this.modifyItem = this.modifyItem.bind(this);
+    // this.toggleItem = this.toggleItem.bind(this);
   }
 
 	// addItem(newTitle) { //加入列表
@@ -35,23 +35,23 @@ class Root extends React.Component {
   //   }
 	// }
 
-	// delItem(id) { //刪除列表
-	// 	const newItems = this.state.todos.filter(ele => ele.id !== id);
-	// 	this.setState({ todos: newItems });
-	// }
-
-	modifyItem(id,newTitle) { //修改列表
-		const newItems = this.state.todos.map(ele => {
-			if(ele.id !== id)
-				return ele;
-			return {
-        id: ele.id,
-        completed: ele.completed,
-				title: newTitle
-			}
-		});
+	delItem(id) { //刪除列表
+		const newItems = this.state.todos.filter(ele => ele.id !== id);
 		this.setState({ todos: newItems });
 	}
+
+	// modifyItem(id,newTitle) { //修改列表
+	// 	const newItems = this.state.todos.map(ele => {
+	// 		if(ele.id !== id)
+	// 			return ele;
+	// 		return {
+  //       id: ele.id,
+  //       completed: ele.completed,
+	// 			title: newTitle
+	// 		}
+	// 	});
+	// 	this.setState({ todos: newItems });
+	// }
 
 	// toggleItem(id) { //checkbox是否勾選
 	// 	const newItems = this.state.todos.map(ele => {
