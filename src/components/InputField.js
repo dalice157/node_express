@@ -24,7 +24,7 @@ class InputField extends React.Component {
     const { title } = this.state;
 
     return (
-      <div className="wrap">
+      <div className="wrap flex-wrap">
         <input
           {...this.props}
           type="text"

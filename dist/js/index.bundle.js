@@ -15211,7 +15211,7 @@ var InputField = function (_React$Component) {
 
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
-        { className: 'wrap' },
+        { className: 'wrap flex-wrap' },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', _extends({}, this.props, {
           type: 'text',
           value: title,
@@ -31012,7 +31012,12 @@ var Header = function (_React$Component) {
           null,
           '\u54C8\u56C9\uFF0C',
           userName,
-          '\uFF1A\u4F60\u6709 ',
+          '\uFF1A'
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'p',
+          null,
+          '\u4F60\u6709 ',
           todoCount,
           ' \u9805\u5DF2\u5B8C\u6210\u5F85\u8FA6\u4E8B\u9805'
         )
@@ -31083,8 +31088,9 @@ var Main = function (_React$Component) {
 					key: index,
 					id: todo.id,
 					title: todo.title,
-					completed: todo.completed,
-					onComplete: onComplete,
+					completed: todo.completed
+					//在最底層做呼叫的處理再往上傳
+					, onComplete: onComplete,
 					onDel: onDel,
 					onEdit: onEdit
 				});
@@ -31256,14 +31262,14 @@ var Item = function (_React$Component) {
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           "button",
-          { type: "button", className: "btn", onClick: function onClick() {
+          { type: "button", className: "btn btn-secondary", onClick: function onClick() {
               return onDel(id);
             } },
           "\u522A\u9664"
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           "button",
-          { type: "button", className: "btn", onClick: this.toggleEditMode },
+          { type: "button", className: "btn btn-info", onClick: this.toggleEditMode },
           "\u4FEE\u6539"
         )
       );

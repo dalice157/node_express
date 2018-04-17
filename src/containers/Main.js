@@ -11,6 +11,7 @@ class Main extends React.Component {
 				id={todo.id}
 				title={todo.title}
 				completed={todo.completed}
+				//在最底層做呼叫的處理再往上傳
 				onComplete={onComplete}
 				onDel={onDel}
 				onEdit={onEdit}
