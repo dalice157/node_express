@@ -5,12 +5,12 @@ import Item from './Item';
 class List extends React.Component {
   render() {
     const { 
+      id,
       title,
       completed,
       onComplete,
       onDel,
       onEdit,
-      id
      } = this.props;
 
     return (

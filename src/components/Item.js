@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-// import InputField from './InputField';
-
 class Item extends React.Component {
 	constructor(props, context) {
     super(props, context);
@@ -19,7 +17,10 @@ class Item extends React.Component {
   }
 
   handleSubmit() {
-    this.props.onEdit(this.props.id, this.state.title);
+    const {onEdit, id} = this.props;
+    const {title} = this.state;
+
+    onEdit(id, title);
     this.toggleEditMode();
   }
 

@@ -31139,12 +31139,12 @@ var List = function (_React$Component) {
     key: 'render',
     value: function render() {
       var _props = this.props,
+          id = _props.id,
           title = _props.title,
           completed = _props.completed,
           onComplete = _props.onComplete,
           onDel = _props.onDel,
-          onEdit = _props.onEdit,
-          id = _props.id;
+          onEdit = _props.onEdit;
 
 
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -31184,8 +31184,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-// import InputField from './InputField';
-
 var Item = function (_React$Component) {
   _inherits(Item, _React$Component);
 
@@ -31212,7 +31210,13 @@ var Item = function (_React$Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit() {
-      this.props.onEdit(this.props.id, this.state.title);
+      var _props = this.props,
+          onEdit = _props.onEdit,
+          id = _props.id;
+      var title = this.state.title;
+
+
+      onEdit(id, title);
       this.toggleEditMode();
     }
   }, {
@@ -31223,13 +31227,13 @@ var Item = function (_React$Component) {
   }, {
     key: "renderViewMode",
     value: function renderViewMode() {
-      var _props = this.props,
-          title = _props.title,
-          completed = _props.completed,
-          onEdit = _props.onEdit,
-          onDel = _props.onDel,
-          onComplete = _props.onComplete,
-          id = _props.id;
+      var _props2 = this.props,
+          title = _props2.title,
+          completed = _props2.completed,
+          onEdit = _props2.onEdit,
+          onDel = _props2.onDel,
+          onComplete = _props2.onComplete,
+          id = _props2.id;
 
 
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
