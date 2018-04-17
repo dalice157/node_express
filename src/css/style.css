@@ -47,13 +47,14 @@ input[type="text"]{
   flex-direction:row;
   font-size: 20px;
   margin: 0 .3em 0 .5em;
+  line-height: 35px;
 }
 
 .radio input[type="radio"], .checkbox input[type="checkbox"]{
   flex-direction:row;
   margin-left: -20px;
   vertical-align: middle;
-  height: 30px;
+  height: 35px;
   color: #fff;
 }
 
