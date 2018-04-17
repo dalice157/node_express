@@ -9,12 +9,14 @@ class List extends React.Component {
       completed,
       onComplete,
       onDel,
-      onEdit
+      onEdit,
+      id
      } = this.props;
 
     return (
       <li>
         <Item 
+          id={id}
           title={title} 
           completed={completed} 
           onComplete={onComplete}

@@ -14,7 +14,8 @@ const configureStore = preloadedState => {
 
   const store = createStore(
 	  rootReducer,
-	  preloadedState,
+		preloadedState,
+		window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 	  applyMiddleware(thunk, apiMiddleware, routerMiddleware(browserHistory), createLogger())
 	)
   return store;

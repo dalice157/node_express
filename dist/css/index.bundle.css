@@ -55,6 +55,9 @@ input[type="color"]{
   min-height: 20px;
   padding-left: 20px;
 }
+.checkbox span{
+  font-size: 20px;
+}
 label{
   display: block;
   margin-bottom: 5px;

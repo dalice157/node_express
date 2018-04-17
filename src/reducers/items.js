@@ -1,13 +1,12 @@
+const initState = [];
 
-export default function Item (state = [], action){
+export default function Item (state = initState, action){
 
 	switch (action.type){
 		case 'ADD_ITEM': 
 			return [
         ...state,
-        {
-          ...action
-        }
+        {...action}
 			];
 		case 'TOGGLE_ITEM': 
 			return state.map(todo =>
@@ -19,7 +18,7 @@ export default function Item (state = [], action){
 			return state.filter(todo =>
         todo.id !== action.id
 			);
-		case 'MODIFY_ITEM': 
+		case 'MODIFY_ITEM': 	
 			return state.map(todo =>
         (todo.id !== action.id)
           ? todo

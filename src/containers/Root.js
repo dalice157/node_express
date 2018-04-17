@@ -12,20 +12,33 @@ import * as Actions from '../actions/Items';
 class Root extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      title: ''
-    };
-    this.handleAddSave = this.handleAddSave.bind(this);
+    
+    this.handleAdd = this.handleAdd.bind(this);
+    this.handleModify = this.handleModify.bind(this);
+    this.handleDel = this.handleDel.bind(this);
+    this.handleToggle = this.handleToggle.bind(this);
   }
 
-  handleAddSave(title){ //防呆：當title為0時就不送出
+  handleAdd(title){ //防呆：當title為0時就不送出
     if (title.length !== 0) {
       this.props.addItem(title);
     }
   }
 
+  handleModify(id, title){
+    this.props.modifyItem(id, title);
+  }
+
+  handleDel(id){
+    this.props.delItem(id);
+  }
+
+  handleToggle(id){
+    this.props.toggleItem(id);
+  }
+
   render() {
-    const { addItem, toggleItem, delItem, modifyItem, itemReducer } = this.props;
+    const { toggleItem, delItem, modifyItem, itemReducer } = this.props;
 
     return (
       <div>
@@ -37,13 +50,13 @@ class Root extends React.Component {
         <InputField 
           placeholder="新增待辦清單"
           value=''
-          onSubmit={this.handleAddSave}
+          onSubmit={this.handleAdd}
         />
         <Main 
           todos={itemReducer}
-					onComplete={(toggleId)=>toggleItem(toggleId)}
-					onDel={(delId)=>delItem(delId)}
-					onEdit={(modifyId, modifyTitle)=>modifyItem(modifyId, modifyTitle)}
+					onComplete={this.handleToggle}
+					onDel={this.handleDel}
+					onEdit={this.handleModify}
         />
 				<Footer />
 			</div>

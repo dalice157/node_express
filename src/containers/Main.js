@@ -8,14 +8,14 @@ class Main extends React.Component {
 		const todoElements = todos.map((todo,index) => (
 			<List 
 				key={index}
+				id={todo.id}
 				title={todo.title}
 				completed={todo.completed}
-				onComplete={() => onComplete(todo.id)}
-				onDel={()=> onDel(todo.id)}
-				onEdit={()=> onEdit(todo.id, 'onChange')}
+				onComplete={onComplete}
+				onDel={onDel}
+				onEdit={onEdit}
 			/>
 		));
-		
     return (
       <main className="wrap">
 				<ul>

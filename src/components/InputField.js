@@ -8,14 +8,19 @@ class InputField extends React.Component {
       title: props.value
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this); 
   }
 
   handleChange(e) {
     this.setState({title: e.target.value});
   }
 
+  handleSubmit() {
+    this.props.onSubmit(this.state.title)
+		this.setState({title:''})
+  }
+
   render() {
-    const { onSubmit } = this.props;
     const { title } = this.state;
 
     return (
@@ -23,15 +28,11 @@ class InputField extends React.Component {
         <input
           {...this.props}
           type="text"
-          value={this.state.title} 
+          value={title} 
           onChange={this.handleChange}
         />
         <button type='button' className="btn"
-				  onClick={
-					()=>{
-						onSubmit(this.state.title)
-						this.setState({title:''})
-					}}>送出</button>
+				  onClick={() => {this.handleSubmit(title)}}>送出</button>
       </div>
     );
   }
