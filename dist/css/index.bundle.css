@@ -85,17 +85,23 @@ header p {
 
 footer {
   color: rgba(0, 0, 0, 0.927);
-  margin-top: 1em;
-  padding: 1em;
-  background-color: rgb(43, 214, 226);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  background-color: #f0f0f0;
 }
 
 main li{
   margin:1em 0;
 }
 
-main.wrap{
-  height: 77vh;
+code {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #e83e8c;
+  word-break: break-word;
 }
 
 .btn {
