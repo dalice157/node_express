@@ -95,7 +95,15 @@ footer {
 }
 
 main li{
+  width: auto;
   margin:1em 0;
+  padding: 1em 20px;
+  background: #fff;
+  -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.04);
+  box-shadow: 0 1px 4px rgba(0,0,0,.04);
+  border: 1px solid rgba(0,0,0,.09);
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
 }
 
 code {
