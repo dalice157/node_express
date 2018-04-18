@@ -29556,78 +29556,57 @@ function createProvider() {
 /* 301 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
 /**
  * Copyright 2015, Yahoo! Inc.
  * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
  */
-(function (global, factory) {
-     true ? module.exports = factory() :
-    typeof define === 'function' && define.amd ? define(factory) :
-    (global.hoistNonReactStatics = factory());
-}(this, (function () {
-    'use strict';
-    
-    var REACT_STATICS = {
-        childContextTypes: true,
-        contextTypes: true,
-        defaultProps: true,
-        displayName: true,
-        getDefaultProps: true,
-        getDerivedStateFromProps: true,
-        mixins: true,
-        propTypes: true,
-        type: true
-    };
-    
-    var KNOWN_STATICS = {
-        name: true,
-        length: true,
-        prototype: true,
-        caller: true,
-        callee: true,
-        arguments: true,
-        arity: true
-    };
-    
-    var defineProperty = Object.defineProperty;
-    var getOwnPropertyNames = Object.getOwnPropertyNames;
-    var getOwnPropertySymbols = Object.getOwnPropertySymbols;
-    var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
-    var getPrototypeOf = Object.getPrototypeOf;
-    var objectPrototype = getPrototypeOf && getPrototypeOf(Object);
-    
-    return function hoistNonReactStatics(targetComponent, sourceComponent, blacklist) {
-        if (typeof sourceComponent !== 'string') { // don't hoist over string (html) components
-            
-            if (objectPrototype) {
-                var inheritedComponent = getPrototypeOf(sourceComponent);
-                if (inheritedComponent && inheritedComponent !== objectPrototype) {
-                    hoistNonReactStatics(targetComponent, inheritedComponent, blacklist);
-                }
-            }
-            
-            var keys = getOwnPropertyNames(sourceComponent);
-            
-            if (getOwnPropertySymbols) {
-                keys = keys.concat(getOwnPropertySymbols(sourceComponent));
-            }
-            
-            for (var i = 0; i < keys.length; ++i) {
-                var key = keys[i];
-                if (!REACT_STATICS[key] && !KNOWN_STATICS[key] && (!blacklist || !blacklist[key])) {
-                    var descriptor = getOwnPropertyDescriptor(sourceComponent, key);
-                    try { // Avoid failures from read-only properties
-                        defineProperty(targetComponent, key, descriptor);
-                    } catch (e) {}
-                }
-            }
-            
-            return targetComponent;
+
+
+var REACT_STATICS = {
+    childContextTypes: true,
+    contextTypes: true,
+    defaultProps: true,
+    displayName: true,
+    getDefaultProps: true,
+    mixins: true,
+    propTypes: true,
+    type: true
+};
+
+var KNOWN_STATICS = {
+    name: true,
+    length: true,
+    prototype: true,
+    caller: true,
+    arguments: true,
+    arity: true
+};
+
+var isGetOwnPropertySymbolsAvailable = typeof Object.getOwnPropertySymbols === 'function';
+
+module.exports = function hoistNonReactStatics(targetComponent, sourceComponent, customStatics) {
+    if (typeof sourceComponent !== 'string') { // don't hoist over string (html) components
+        var keys = Object.getOwnPropertyNames(sourceComponent);
+
+        /* istanbul ignore else */
+        if (isGetOwnPropertySymbolsAvailable) {
+            keys = keys.concat(Object.getOwnPropertySymbols(sourceComponent));
         }
-        
-        return targetComponent;
-    };
-})));
+
+        for (var i = 0; i < keys.length; ++i) {
+            if (!REACT_STATICS[keys[i]] && !KNOWN_STATICS[keys[i]] && (!customStatics || !customStatics[keys[i]])) {
+                try {
+                    targetComponent[keys[i]] = sourceComponent[keys[i]];
+                } catch (error) {
+
+                }
+            }
+        }
+    }
+
+    return targetComponent;
+};
 
 
 /***/ }),
@@ -35837,7 +35816,7 @@ var Api = function (_React$Component) {
 /* 397 */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+throw new Error("Module build failed: ModuleBuildError: Module build failed: Error: ENOENT: no such file or directory, open '/Users/dalice.chu/Desktop/codeTest/node_express/node_modules/css-loader/lib/css-base.js'\n    at runLoaders (/Users/dalice.chu/Desktop/codeTest/node_express/node_modules/webpack/lib/NormalModule.js:195:19)\n    at /Users/dalice.chu/Desktop/codeTest/node_express/node_modules/loader-runner/lib/LoaderRunner.js:364:11\n    at /Users/dalice.chu/Desktop/codeTest/node_express/node_modules/loader-runner/lib/LoaderRunner.js:200:19\n    at /Users/dalice.chu/Desktop/codeTest/node_express/node_modules/enhanced-resolve/lib/CachedInputFileSystem.js:70:14\n    at _combinedTickCallback (internal/process/next_tick.js:131:7)\n    at process._tickCallback (internal/process/next_tick.js:180:9)");
 
 /***/ })
 /******/ ]);
