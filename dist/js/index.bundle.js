@@ -35380,7 +35380,7 @@ var Main = function (_React$Component) {
 
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
-        { className: 'wrap' },
+        { className: 'wrap main-wrap' },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'p',
           null,
@@ -35687,14 +35687,14 @@ var Item = function (_React$Component) {
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           "button",
-          { type: "button", className: "btn btn-secondary", onClick: function onClick() {
+          { type: "button", className: "btn", onClick: function onClick() {
               return onDel(id);
             } },
           "\u522A\u9664"
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           "button",
-          { type: "button", className: "btn btn-info", onClick: this.toggleEditMode },
+          { type: "button", className: "btn", onClick: this.toggleEditMode },
           "\u4FEE\u6539"
         )
       );

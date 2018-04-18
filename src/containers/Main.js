@@ -52,7 +52,7 @@ class Main extends React.Component {
 		));
 		
     return (
-			<div className="wrap">
+			<div className="wrap main-wrap">
 				<p>哈囉，Da Chu：</p>
         <p>你有 <code>{todoCount}</code> 項已完成待辦事項</p>
 				<InputField 

@@ -44,8 +44,8 @@ class Item extends React.Component {
         }}>
         {title} 
         </span>
-        <button type='button' className="btn btn-secondary" onClick={()=>onDel(id)} >刪除</button>
-        <button type='button' className="btn btn-info" onClick={this.toggleEditMode} >修改</button>
+        <button type='button' className="btn" onClick={()=>onDel(id)} >刪除</button>
+        <button type='button' className="btn" onClick={this.toggleEditMode} >修改</button>
       </label>
     );
   }
