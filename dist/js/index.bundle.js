@@ -35200,34 +35200,38 @@ var Header = function (_React$Component) {
 
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'header',
-        { className: 'wrap' },
+        null,
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'h1',
-          null,
-          title
-        ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'nav',
-          null,
+          'div',
+          { className: 'wrap' },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'ul',
+            'h1',
+            null,
+            title
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'nav',
             null,
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              'li',
+              'ul',
               null,
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                __WEBPACK_IMPORTED_MODULE_1_react_router__["a" /* IndexLink */],
-                { to: '/' },
-                'Home'
-              )
-            ),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              'li',
-              null,
+                'li',
+                null,
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                  __WEBPACK_IMPORTED_MODULE_1_react_router__["a" /* IndexLink */],
+                  { to: '/' },
+                  'Home'
+                )
+              ),
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                __WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Link */],
-                { to: '/api/user/1' },
-                'User'
+                'li',
+                null,
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                  __WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Link */],
+                  { to: '/api/user/1' },
+                  'User'
+                )
               )
             )
           )

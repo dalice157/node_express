@@ -7,14 +7,16 @@ class Header extends React.Component {
     const {title} = this.props;
 
     return (
-      <header className="wrap">
-        <h1>{title}</h1>
-        <nav>
-          <ul>
-            <li><IndexLink to="/">Home</IndexLink></li>
-            <li><Link to="/api/user/1">User</Link></li>
-          </ul>
-        </nav>
+      <header>
+        <div className="wrap">
+          <h1>{title}</h1>
+          <nav>
+            <ul>
+              <li><IndexLink to="/">Home</IndexLink></li>
+              <li><Link to="/api/user/1">User</Link></li>
+            </ul>
+          </nav>
+        </div>
       </header>
     );
   }
