@@ -13,7 +13,7 @@ class Root extends React.Component {
     return (
       <div>
         <Header title="我的待辦事項" />
-        {children}
+        {this.props.children}
 				<Footer />
 			</div>
 		);

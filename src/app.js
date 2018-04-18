@@ -6,7 +6,7 @@ import Routes from './router/index';
 
 const App = ({ store, history }) => (
   <Provider store={store}>    
-		<Router history={history} Routes={Routes} />    
+		<Router history={history} routes={Routes} />    
   </Provider>
 )
 
