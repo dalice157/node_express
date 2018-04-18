@@ -97,6 +97,10 @@ footer {
   background-color: #f0f0f0;
 }
 
+footer .wrap{
+  text-align: center;
+}
+
 main li{
   width: auto;
   margin:1em 0;
@@ -139,8 +143,8 @@ code {
 
 .btn-secondary{
   color: #fff;
-  background-color: #6c757d;
-  border-color: #6c757d;
+  background-color: #858f98;
+  border-color: #8f98a0;
 }
 .btn-secondary:hover{
   color: #fff;
