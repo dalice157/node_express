@@ -4286,21 +4286,21 @@ module.exports = ReactInstanceMap;
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Router__ = __webpack_require__(274);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_0__Router__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_0__Router__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Link__ = __webpack_require__(138);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_1__Link__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_1__Link__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__IndexLink__ = __webpack_require__(282);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_2__IndexLink__["a"]; });
+/* unused harmony reexport IndexLink */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__withRouter__ = __webpack_require__(283);
 /* unused harmony reexport withRouter */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__IndexRedirect__ = __webpack_require__(285);
 /* unused harmony reexport IndexRedirect */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__IndexRoute__ = __webpack_require__(286);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_5__IndexRoute__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_5__IndexRoute__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Redirect__ = __webpack_require__(139);
 /* unused harmony reexport Redirect */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Route__ = __webpack_require__(287);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_7__Route__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_7__Route__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__RouteUtils__ = __webpack_require__(22);
 /* unused harmony reexport createRoutes */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__RouterContext__ = __webpack_require__(79);
@@ -4317,7 +4317,7 @@ module.exports = ReactInstanceMap;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__applyRouterMiddleware__ = __webpack_require__(293);
 /* unused harmony reexport applyRouterMiddleware */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__browserHistory__ = __webpack_require__(294);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return __WEBPACK_IMPORTED_MODULE_15__browserHistory__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_15__browserHistory__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__hashHistory__ = __webpack_require__(297);
 /* unused harmony reexport hashHistory */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__createMemoryHistory__ = __webpack_require__(140);
@@ -16123,7 +16123,7 @@ function setup() {
   var initState = window.__INITIAL_STATE__;
 
   var store = Object(__WEBPACK_IMPORTED_MODULE_5__store_index__["a" /* default */])(initState);
-  var history = Object(__WEBPACK_IMPORTED_MODULE_4_react_router_redux__["syncHistoryWithStore"])(__WEBPACK_IMPORTED_MODULE_2_react_router__["f" /* browserHistory */], store);
+  var history = Object(__WEBPACK_IMPORTED_MODULE_4_react_router_redux__["syncHistoryWithStore"])(__WEBPACK_IMPORTED_MODULE_2_react_router__["e" /* browserHistory */], store);
 
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__app__["a" /* default */], { store: store, history: history });
 }
@@ -28144,7 +28144,7 @@ var IndexLink = __WEBPACK_IMPORTED_MODULE_1_create_react_class___default()({
   }
 });
 
-/* harmony default export */ __webpack_exports__["a"] = (IndexLink);
+/* unused harmony default export */ var _unused_webpack_default_export = (IndexLink);
 
 /***/ }),
 /* 283 */
@@ -30915,7 +30915,7 @@ function routerMiddleware(history) {
 
 var configureStore = function configureStore(preloadedState) {
 
-	var store = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["d" /* createStore */])(__WEBPACK_IMPORTED_MODULE_3__reducers__["a" /* default */], preloadedState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), Object(__WEBPACK_IMPORTED_MODULE_0_redux__["a" /* applyMiddleware */])(__WEBPACK_IMPORTED_MODULE_5_redux_thunk___default.a, __WEBPACK_IMPORTED_MODULE_6_redux_api_middleware__["apiMiddleware"], Object(__WEBPACK_IMPORTED_MODULE_2_react_router_redux__["routerMiddleware"])(__WEBPACK_IMPORTED_MODULE_1_react_router__["f" /* browserHistory */]), __WEBPACK_IMPORTED_MODULE_4_redux_logger___default()()));
+	var store = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["d" /* createStore */])(__WEBPACK_IMPORTED_MODULE_3__reducers__["a" /* default */], preloadedState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), Object(__WEBPACK_IMPORTED_MODULE_0_redux__["a" /* applyMiddleware */])(__WEBPACK_IMPORTED_MODULE_5_redux_thunk___default.a, __WEBPACK_IMPORTED_MODULE_6_redux_api_middleware__["apiMiddleware"], Object(__WEBPACK_IMPORTED_MODULE_2_react_router_redux__["routerMiddleware"])(__WEBPACK_IMPORTED_MODULE_1_react_router__["e" /* browserHistory */]), __WEBPACK_IMPORTED_MODULE_4_redux_logger___default()()));
 	return store;
 };
 
@@ -35077,7 +35077,7 @@ var App = function App(_ref) {
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
     __WEBPACK_IMPORTED_MODULE_2_react_redux__["a" /* Provider */],
     { store: store },
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_router__["e" /* Router */], { history: history, routes: __WEBPACK_IMPORTED_MODULE_4__router_index__["a" /* default */] })
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_router__["d" /* Router */], { history: history, routes: __WEBPACK_IMPORTED_MODULE_4__router_index__["a" /* default */] })
   );
 };
 
@@ -35106,10 +35106,10 @@ App.propTypes = {
 
 
 /* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-	__WEBPACK_IMPORTED_MODULE_1_react_router__["d" /* Route */],
+	__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */],
 	{ path: '/', component: __WEBPACK_IMPORTED_MODULE_2__containers_Root__["a" /* default */] },
-	__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["b" /* IndexRoute */], { component: __WEBPACK_IMPORTED_MODULE_3__containers_Main__["a" /* default */] }),
-	__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["d" /* Route */], { path: 'api/user/:pid', component: __WEBPACK_IMPORTED_MODULE_4__containers_Api__["a" /* default */] })
+	__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["a" /* IndexRoute */], { component: __WEBPACK_IMPORTED_MODULE_3__containers_Main__["a" /* default */] }),
+	__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: 'api/user/:pid', component: __WEBPACK_IMPORTED_MODULE_4__containers_Api__["a" /* default */] })
 ));
 
 /***/ }),
@@ -35146,11 +35146,13 @@ var Root = function (_React$Component) {
   _createClass(Root, [{
     key: 'render',
     value: function render() {
+      var children = this.props.children;
+
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
         null,
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__components_Header__["a" /* default */], { title: '\u6211\u7684\u5F85\u8FA6\u4E8B\u9805' }),
-        this.props.children,
+        children,
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_Footer__["a" /* default */], null)
       );
     }
@@ -35219,7 +35221,7 @@ var Header = function (_React$Component) {
                 'li',
                 null,
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                  __WEBPACK_IMPORTED_MODULE_1_react_router__["a" /* IndexLink */],
+                  __WEBPACK_IMPORTED_MODULE_1_react_router__["b" /* Link */],
                   { to: '/' },
                   'Home'
                 )
@@ -35228,7 +35230,7 @@ var Header = function (_React$Component) {
                 'li',
                 null,
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                  __WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Link */],
+                  __WEBPACK_IMPORTED_MODULE_1_react_router__["b" /* Link */],
                   { to: '/api/user/1' },
                   'User'
                 )

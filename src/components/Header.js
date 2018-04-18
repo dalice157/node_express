@@ -12,7 +12,7 @@ class Header extends React.Component {
           <h1>{title}</h1>
           <nav>
             <ul>
-              <li><IndexLink to="/">Home</IndexLink></li>
+              <li><Link to="/">Home</Link></li>
               <li><Link to="/api/user/1">User</Link></li>
             </ul>
           </nav>
