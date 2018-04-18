@@ -1,19 +1,13 @@
 import React, { Component } from 'react';
-import { Router, Route, IndexRoute } from 'react-router';
+import { Route, IndexRoute } from 'react-router';
 
 import Root from '../containers/Root';
+import Main from '../containers/Main';
+import Api from '../containers/Api';
 
-class Routes extends React.Component{
-	render(){
-		const {store, history} = this.props;
-		return(
-			<Router store={store} history={history}>
-				<Route path='/' component={Root}>
-					<IndexRoute component={Root}/>
-				</Route>
-			</Router>
-		)
-	}
-}
-
-export default Routes;
+export default (
+	<Route path="/" component={Root}>
+		<IndexRoute component={Main}/>
+		<Route path="api/user/:pid" component={Api}/>
+	</Route>
+)
