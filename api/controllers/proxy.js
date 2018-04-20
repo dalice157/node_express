@@ -40,4 +40,60 @@ router.get('/user/:pid', (req, res) => {
 	});
 })
 
+
+router.get('/shop/:sid', (req, res) => {
+  const { sid } = req.params;
+	const who = 1;
+	fetch(`${JAVA_URL}/shop/${sid}/${who}`, {
+		method: 'GET',
+		headers: {
+			'Content-Type': 'application/json; charset=utf-8',
+		}
+	})
+	.then(status)	
+	.then(function(data) {		
+		res.status(200).json(data);
+	}).catch(function(error) {
+		console.log('Request failed', error);
+		let apiError = error.errors || {message:'internal error'};		
+		res.status(error.status || 500).json({ 'error': apiError.message});
+	});
+})
+
+router.get('/shop/:sid/introduction', (req, res) => {
+  const { sid } = req.params;
+	const who = 1;
+	fetch(`${JAVA_URL}/shop/${sid}/introduction/${who}`, {
+		method: 'GET',
+		headers: {
+			'Content-Type': 'application/json; charset=utf-8',
+		}
+	})
+	.then(status)	
+	.then(function(data) {		
+		res.status(200).json(data);
+	}).catch(function(error) {
+		console.log('Request failed', error);
+		let apiError = error.errors || {message:'internal error'};		
+		res.status(error.status || 500).json({ 'error': apiError.message});
+	});
+})
+
+router.get('/items', (req, res) => {
+	fetch(`http://localhost:3030/posts.json`, {
+		method: 'GET',
+		headers: {
+			'Content-Type': 'application/json; charset=utf-8',
+		}
+	})
+	.then(status)	
+	.then(function(data) {		
+		res.status(200).json(data);
+	}).catch(function(error) {
+		console.log('Request failed', error);
+		let apiError = error.errors || {message:'internal error'};		
+		res.status(error.status || 500).json({ 'error': apiError.message});
+	});
+})
+
 module.exports = router;
