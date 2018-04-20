@@ -3,12 +3,21 @@ import { connect } from 'react-redux';
 
 import Items from '../components/Items';
 
-import * as Actions from '../actions/list';
+import { loadShopBySid, loadIntroBySid } from '../actions/user';
 
 class Api extends React.Component {
+  constructor(props) {
+    super(props);
+
+  }
+
+  componentWillMount(){
+    console.log(this.props)
+    this.props.loadListAll(9527);
+  }
 
   componentDidMount(){
-    console.log(this.props.loadListAll())
+    
   }
 
   render() {
@@ -22,13 +31,13 @@ class Api extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-		listReducer:state.listReducer
+		userReducer:state.userReducer
 	}
 };
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-    loadListAll: () => dispatch(Actions.loadListAll())
+    loadListAll: (sid) => dispatch(loadShopBySid(sid))
 	}
 };
 

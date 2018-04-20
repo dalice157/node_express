@@ -9,9 +9,8 @@ import Items from '../components/Items';
 export default (
 	<Route path="/" component={Root}>
 		<IndexRoute component={Main}/>
-		<Route path="api/items" component={Api}>
+		<Route path="shop/:sid" component={Api}>
 			<IndexRoute component={Items}/>
-			<Route path="/" component={Items}></Route>
 		</Route>
 	</Route>
 )

@@ -31094,7 +31094,11 @@ function Item() {
 
 	switch (action.type) {
 		case 'ADD_ITEM':
-			return [].concat(_toConsumableArray(state), [_extends({}, action)]);
+			return [].concat(_toConsumableArray(state), [{
+				id: action.id,
+				title: action.title,
+				completed: action.completed
+			}]);
 		case 'TOGGLE_ITEM':
 			return state.map(function (todo) {
 				return todo.id === action.id ? _extends({}, todo, { completed: !todo.completed }) : todo;
@@ -31138,17 +31142,12 @@ function User() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initState;
   var action = arguments[1];
 
-  switch (action.type) {
+  console.log("action", action);
+  switch (action.types) {
     case 'LOAD_SHOP_SUCCESS':
       {
-        var _action$payload = action.payload,
-            entity = _action$payload.entity,
-            fileMap = _action$payload.fileMap;
-
-        return _extends({}, state, {
-          shop: entity,
-          fileMap: fileMap
-        });
+        // const { entity, fileMap } = action.payload;
+        return _extends({}, state, action.payload);
       }
     default:
       return state;
@@ -31172,7 +31171,7 @@ function User() {
   switch (action.type) {
     case 'LOAD_LIST_SUCCESS':
       {
-        return [].concat(_toConsumableArray(state), [action.items]);
+        return [].concat(_toConsumableArray(state), [action]);
       }
     default:
       return state;
@@ -35247,9 +35246,8 @@ App.propTypes = {
 	__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["a" /* IndexRoute */], { component: __WEBPACK_IMPORTED_MODULE_3__containers_Main__["a" /* default */] }),
 	__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 		__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */],
-		{ path: 'api/items', component: __WEBPACK_IMPORTED_MODULE_4__containers_Api__["a" /* default */] },
-		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["a" /* IndexRoute */], { component: __WEBPACK_IMPORTED_MODULE_5__components_Items__["a" /* default */] }),
-		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["c" /* Route */], { path: '/', component: __WEBPACK_IMPORTED_MODULE_5__components_Items__["a" /* default */] })
+		{ path: 'shop/:sid', component: __WEBPACK_IMPORTED_MODULE_4__containers_Api__["a" /* default */] },
+		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router__["a" /* IndexRoute */], { component: __WEBPACK_IMPORTED_MODULE_5__components_Items__["a" /* default */] })
 	)
 ));
 
@@ -35372,7 +35370,7 @@ var Header = function (_React$Component) {
                 null,
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                   __WEBPACK_IMPORTED_MODULE_1_react_router__["b" /* Link */],
-                  { to: 'api/items' },
+                  { to: 'shop/9527' },
                   'User'
                 )
               )
@@ -35945,7 +35943,7 @@ var TOGGLE_ITEM = 'TOGGLE_ITEM';
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(41);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Items__ = __webpack_require__(175);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__actions_list__ = __webpack_require__(400);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__actions_user__ = __webpack_require__(406);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -35964,17 +35962,21 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Api = function (_React$Component) {
   _inherits(Api, _React$Component);
 
-  function Api() {
+  function Api(props) {
     _classCallCheck(this, Api);
 
-    return _possibleConstructorReturn(this, (Api.__proto__ || Object.getPrototypeOf(Api)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (Api.__proto__ || Object.getPrototypeOf(Api)).call(this, props));
   }
 
   _createClass(Api, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      console.log(this.props.loadListAll());
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      console.log(this.props);
+      this.props.loadListAll(9527);
     }
+  }, {
+    key: 'componentDidMount',
+    value: function componentDidMount() {}
   }, {
     key: 'render',
     value: function render() {
@@ -35991,14 +35993,14 @@ var Api = function (_React$Component) {
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
-    listReducer: state.listReducer
+    userReducer: state.userReducer
   };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    loadListAll: function loadListAll() {
-      return dispatch(__WEBPACK_IMPORTED_MODULE_3__actions_list__["a" /* loadListAll */]());
+    loadListAll: function loadListAll(sid) {
+      return dispatch(Object(__WEBPACK_IMPORTED_MODULE_3__actions_user__["a" /* loadShopBySid */])(sid));
     }
   };
 };
@@ -36006,11 +36008,23 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(Api));
 
 /***/ }),
-/* 400 */
+/* 400 */,
+/* 401 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 402 */,
+/* 403 */,
+/* 404 */,
+/* 405 */,
+/* 406 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = loadListAll;
+/* harmony export (immutable) */ __webpack_exports__["a"] = loadShopBySid;
+/* unused harmony export loadIntroBySid */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redux_api_middleware__ = __webpack_require__(157);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redux_api_middleware___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_redux_api_middleware__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -36019,19 +36033,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var BASE_URL = 'http://localhost:3030/api';
 
-function loadListAll() {
+function loadShopBySid(sid) {
   return _defineProperty({}, __WEBPACK_IMPORTED_MODULE_0_redux_api_middleware__["RSAA"], {
-    endpoint: BASE_URL + '/posts.json',
+    endpoint: BASE_URL + '/shop/' + sid,
     method: 'GET',
-    types: ['REQUEST', 'LOAD_LIST_SUCCESS', 'FAILURE']
+    types: ['REQUEST', 'LOAD_SHOP_SUCCESS', 'FAILURE']
   });
 }
 
-/***/ }),
-/* 401 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
+function loadIntroBySid(sid) {
+  return _defineProperty({}, __WEBPACK_IMPORTED_MODULE_0_redux_api_middleware__["RSAA"], {
+    endpoint: BASE_URL + '/shop/' + sid + '/introduction',
+    method: 'GET',
+    types: ['REQUEST', 'LOAD_INTRO_SUCCESS', 'FAILURE']
+  });
+}
 
 /***/ })
 /******/ ]);

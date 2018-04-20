@@ -5,7 +5,7 @@ export default function User (state = initState, action){
     case 'LOAD_LIST_SUCCESS': {
       return [
         ...state,
-        action.items
+        action
 			];
     }
     default:

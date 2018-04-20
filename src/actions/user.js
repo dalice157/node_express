@@ -1,8 +1,8 @@
 import { RSAA } from 'redux-api-middleware';
 
-const BASE_URL = 'http://localhost:3030/api';
+let BASE_URL = 'http://localhost:3030/api';
 
-export const loadShopBySid = sid => {
+export function loadShopBySid (sid){
   return {
     [RSAA]: {
       endpoint: `${BASE_URL}/shop/${sid}`,
@@ -16,7 +16,7 @@ export const loadShopBySid = sid => {
   };
 }
 
-export const loadIntroBySid = sid => {
+export function loadIntroBySid (sid){
   return {
     [RSAA]: {
       endpoint: `${BASE_URL}/shop/${sid}/introduction`,

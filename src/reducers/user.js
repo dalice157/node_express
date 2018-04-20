@@ -1,4 +1,4 @@
-const initState = {
+let initState = {
   shop: {
     ownerMeta:{}
   },
@@ -11,13 +11,13 @@ const initState = {
 };
 
 export default function User (state = initState, action){
-	switch (action.type) {
+  console.log("action", action)
+	switch (action.types) {
     case 'LOAD_SHOP_SUCCESS': {
-      const { entity, fileMap } = action.payload;
+      // const { entity, fileMap } = action.payload;
       return {
         ...state,
-        shop: entity,
-        fileMap
+        ...action.payload
       };
     }
     default:

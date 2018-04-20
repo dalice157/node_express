@@ -6,7 +6,11 @@ export default function Item (state = initState, action){
 		case 'ADD_ITEM': 
 			return [
         ...state,
-        {...action}
+        {
+					id: action.id,
+					title: action.title,
+					completed: action.completed
+				}
 			];
 		case 'TOGGLE_ITEM': 
 			return state.map(todo =>
