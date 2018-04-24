@@ -37,7 +37,7 @@ class Main extends React.Component {
 	
   render() {
 		const { toggleItem, delItem, modifyItem, itemReducer } = this.props;
-		const todoCount = itemReducer.filter((todo) => todo.completed).length;
+    const todoCount = itemReducer.filter((todo) => todo.completed).length;
 		const todoElements = itemReducer.map((todo,index) => (
 			<List 
 				key={index}
@@ -50,7 +50,6 @@ class Main extends React.Component {
 				onEdit={this.handleModify}
 			/>
 		));
-		
     return (
 			<div className="wrap main-wrap">
 				<p>哈囉，Da Chu：</p>
