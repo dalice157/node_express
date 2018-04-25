@@ -12,8 +12,8 @@ class Api extends React.Component {
   }
 
   componentWillMount(){
-    console.log(this.props)
-    this.props.loadListAll(9527);
+    console.log('api:',this.props)
+    // this.props.loadListAll(9527);
   }
 
   componentDidMount(){

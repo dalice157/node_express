@@ -27,7 +27,7 @@ app.use(morgan('dev'));//將 log 印在 Terminal 裡
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, '../dist')));
+app.use(express.static(path.join(__dirname, '../dist')));//設置靜態文件目錄
 
 // Routers
 /* GET home page. */

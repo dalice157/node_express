@@ -11,7 +11,6 @@ let initState = {
 };
 
 export default function User (state = initState, action){
-  console.log("action", action)
 	switch (action.types) {
     case 'LOAD_SHOP_SUCCESS': {
       // const { entity, fileMap } = action.payload;

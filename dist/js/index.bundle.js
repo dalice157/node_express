@@ -31038,11 +31038,9 @@ function routerMiddleware(history) {
 
 
 
-var configureStore = function configureStore() {
+var configureStore = function configureStore(preloadedState) {
 
-	var store = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["d" /* createStore */])(__WEBPACK_IMPORTED_MODULE_3__reducers__["a" /* default */],
-	//preloadedState,
-	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), Object(__WEBPACK_IMPORTED_MODULE_0_redux__["a" /* applyMiddleware */])(__WEBPACK_IMPORTED_MODULE_5_redux_thunk___default.a, __WEBPACK_IMPORTED_MODULE_6_redux_api_middleware__["apiMiddleware"], Object(__WEBPACK_IMPORTED_MODULE_2_react_router_redux__["routerMiddleware"])(__WEBPACK_IMPORTED_MODULE_1_react_router__["e" /* browserHistory */]), __WEBPACK_IMPORTED_MODULE_4_redux_logger___default()()));
+	var store = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["d" /* createStore */])(__WEBPACK_IMPORTED_MODULE_3__reducers__["a" /* default */], preloadedState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), Object(__WEBPACK_IMPORTED_MODULE_0_redux__["a" /* applyMiddleware */])(__WEBPACK_IMPORTED_MODULE_5_redux_thunk___default.a, __WEBPACK_IMPORTED_MODULE_6_redux_api_middleware__["apiMiddleware"], Object(__WEBPACK_IMPORTED_MODULE_2_react_router_redux__["routerMiddleware"])(__WEBPACK_IMPORTED_MODULE_1_react_router__["e" /* browserHistory */]), __WEBPACK_IMPORTED_MODULE_4_redux_logger___default()()));
 	return store;
 };
 
@@ -31142,7 +31140,6 @@ function User() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initState;
   var action = arguments[1];
 
-  console.log("action", action);
   switch (action.types) {
     case 'LOAD_SHOP_SUCCESS':
       {
@@ -35970,8 +35967,8 @@ var Api = function (_React$Component) {
   _createClass(Api, [{
     key: 'componentWillMount',
     value: function componentWillMount() {
-      console.log(this.props);
-      this.props.loadListAll(9527);
+      console.log('api:', this.props);
+      // this.props.loadListAll(9527);
     }
   }, {
     key: 'componentDidMount',

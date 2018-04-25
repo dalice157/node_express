@@ -10,6 +10,7 @@ function status(response) {
 }
 
 function commonRest(promise,res){
+	console.log('promise', promise)
 	return promise.then(status)
 	.then(json => res ? res.status(200).json(json) : json) //return to chain
 	.catch(error => {

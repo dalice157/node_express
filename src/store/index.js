@@ -10,11 +10,11 @@ import createLogger from 'redux-logger'
 import thunk from 'redux-thunk'
 import { apiMiddleware } from 'redux-api-middleware'
 
-const configureStore = () => {
+const configureStore = (preloadedState) => {
 
   const store = createStore(
 	  rootReducer,
-		//preloadedState,
+		preloadedState,
 		window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 	  applyMiddleware(thunk, apiMiddleware, routerMiddleware(browserHistory), createLogger())
 	)
