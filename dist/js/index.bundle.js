@@ -35467,6 +35467,9 @@ var Main = function (_React$Component) {
   }
 
   _createClass(Main, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {}
+  }, {
     key: 'handleAdd',
     value: function handleAdd(title) {
       //防呆：當title為0時就不送出

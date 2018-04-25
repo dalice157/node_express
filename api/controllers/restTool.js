@@ -10,7 +10,6 @@ function status(response) {
 }
 
 function commonRest(promise,res){
-	console.log('promise', promise)
 	return promise.then(status)
 	.then(json => res ? res.status(200).json(json) : json) //return to chain
 	.catch(error => {
@@ -32,6 +31,5 @@ function callAPIGet(url,res){
 
 
 module.exports = {
-	// restGET: restGETProcess,
 	callAPIGet: callAPIGet	
 };
