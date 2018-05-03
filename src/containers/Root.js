@@ -10,11 +10,11 @@ class Root extends React.Component {
 
   }
   render() {
-    const { children  } = this.props;
+    
     return (
       <div>
         <Header title="我的待辦事項" />
-        { children }
+        { this.props.children }
 				<Footer />
 			</div>
 		);

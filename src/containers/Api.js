@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import Items from '../components/Items';
-
 import { loadShopBySid, loadIntroBySid } from '../actions/user';
 
 class Api extends React.Component {
@@ -23,7 +21,7 @@ class Api extends React.Component {
   render() {
     return (
       <div className="wrap main-wrap">
-         <Items />
+        { this.props.children }
 			</div>
 		);
   }

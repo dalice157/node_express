@@ -12,8 +12,8 @@ class Header extends React.Component {
           <h1>{title}</h1>
           <nav>
             <ul>
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="shop/9527">User</Link></li>
+              <li><IndexLink to="/" activeClassName="active">Home</IndexLink></li>
+              <li><Link to="shop/9527" activeClassName="active">User</Link></li>
             </ul>
           </nav>
         </div>

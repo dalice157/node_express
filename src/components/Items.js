@@ -3,8 +3,6 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 class Items extends React.Component {
-	
-
 	constructor(props, context) {
     super(props, context);
     this.state = { 

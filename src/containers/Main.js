@@ -17,9 +17,9 @@ class Main extends React.Component {
     this.handleToggle = this.handleToggle.bind(this);
   }
 
-  componentDidMount(){
-    
-  }
+  // componentWillMount(){
+  //   console.log(this.props);
+  // }
 
   handleAdd(title){ //防呆：當title為0時就不送出
     if (title.length !== 0) {

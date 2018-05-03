@@ -2,6 +2,13 @@ import { ADD_ITEM, DEL_ITEM, MODIFY_ITEM, TOGGLE_ITEM } from '../constants/actio
 
 let nextTodoId = 0;
 
+// export function test(){
+// 	return function(){
+// 		console.log('work!')
+// 	}
+// }
+
+
 export function addItem(newTitle) {
 	return {
 		type: ADD_ITEM,

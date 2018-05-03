@@ -102,6 +102,11 @@ header nav li{
   margin-right: .5em;
 }
 
+header nav .active{ 
+  text-decoration: underline;
+  color: rgba(255,255,255,.3)
+}
+
 p {
   margin-bottom: 10px;
 }
